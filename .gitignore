@@ -28,4 +28,5 @@ target/
 .DS_Store
 Thumbs.db
 
-
+# other
+README.md
