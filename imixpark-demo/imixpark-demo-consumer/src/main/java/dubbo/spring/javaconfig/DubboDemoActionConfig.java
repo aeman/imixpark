@@ -15,7 +15,7 @@
  */
 package dubbo.spring.javaconfig;
 
-import com.alibaba.dubbo.demo.consumer.DemoJavaConfigAction;
+import cn.ebatech.imixpark.demo.consumer.DemoJavaConfigAction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

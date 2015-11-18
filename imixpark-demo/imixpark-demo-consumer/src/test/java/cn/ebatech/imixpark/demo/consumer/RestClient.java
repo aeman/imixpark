@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.alibaba.dubbo.demo.consumer;
+package cn.ebatech.imixpark.demo.consumer;
 
 
 import cn.ebatech.imixpark.demo.model.User;
@@ -42,27 +42,27 @@ public class RestClient {
 //                    for (int j = 0; j < 500; j++) {
         registerUser("http://localhost:" + port + "/services/users/register.json", MediaType.APPLICATION_JSON_TYPE);
 
-        registerUser("http://localhost:" + port + "/services/users/register.xml", MediaType.TEXT_XML_TYPE);
+//        registerUser("http://127.0.0.1:" + port + "/services/users/register.xml", MediaType.TEXT_XML_TYPE);
 
         getUser("http://localhost:" + port + "/services/users/1.json");
 
-        getUser("http://localhost:" + port + "/services/users/2.xml");
+//        getUser("http://localhost:" + port + "/services/users/2.xml");
 
-        registerUser("http://localhost:" + port + "/services/u/register.json", MediaType.APPLICATION_JSON_TYPE);
+//        registerUser("http://localhost:" + port + "/services/u/register.json", MediaType.APPLICATION_JSON_TYPE);
 
-        registerUser("http://localhost:" + port + "/services/u/register.xml", MediaType.TEXT_XML_TYPE);
+//        registerUser("http://localhost:" + port + "/services/u/register.xml", MediaType.TEXT_XML_TYPE);
 
-        getUser("http://localhost:" + port + "/services/u/1.json");
+//        getUser("http://localhost:" + port + "/services/u/1.json");
 
-        getUser("http://localhost:" + port + "/services/u/2.xml");
+//        getUser("http://localhost:" + port + "/services/u/2.xml");
 
-        registerUser("http://localhost:" + port + "/services/customers/register.json", MediaType.APPLICATION_JSON_TYPE);
+//        registerUser("http://localhost:" + port + "/services/customers/register.json", MediaType.APPLICATION_JSON_TYPE);
 
-        registerUser("http://localhost:" + port + "/services/customers/register.xml", MediaType.TEXT_XML_TYPE);
+//        registerUser("http://localhost:" + port + "/services/customers/register.xml", MediaType.TEXT_XML_TYPE);
 
-        getUser("http://localhost:" + port + "/services/customers/1.json");
-
-        getUser("http://localhost:" + port + "/services/customers/2.xml");
+//        getUser("http://localhost:" + port + "/services/customers/1.json");
+//
+//        getUser("http://localhost:" + port + "/services/customers/2.xml");
 //                    }
 //                }
 //            }).start();

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.alibaba.dubbo.demo.consumer;
+package cn.ebatech.imixpark.demo.consumer;
 
 import cn.ebatech.imixpark.demo.model.User;
 import cn.ebatech.imixpark.demo.rest.UserRestService2;

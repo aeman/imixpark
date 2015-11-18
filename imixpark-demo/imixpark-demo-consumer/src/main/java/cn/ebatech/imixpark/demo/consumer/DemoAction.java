@@ -13,18 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.alibaba.dubbo.demo.consumer;
+package cn.ebatech.imixpark.demo.consumer;
 
 
 import cn.ebatech.imixpark.demo.model.User;
 import cn.ebatech.imixpark.demo.rest.UserRestService2;
 import com.alibaba.dubbo.rpc.RpcContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class DemoAction {
 
     private UserRestService2 userRestService2;
 
-    public void setAnotherUserRestService(UserRestService2 userRestService2) {
+    @Autowired
+    public void setUserRestService2(UserRestService2 userRestService2) {
         this.userRestService2 = userRestService2;
     }
 

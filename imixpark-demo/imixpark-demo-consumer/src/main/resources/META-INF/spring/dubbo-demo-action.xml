@@ -19,6 +19,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-    <bean class="com.alibaba.dubbo.demo.consumer.DemoAction" init-method="start" />
-
+    <bean class="cn.ebatech.imixpark.demo.consumer.DemoAction" init-method="start" >
+        <property name="userRestService2" ref="userRestService2" />
+    </bean>
 </beans>
