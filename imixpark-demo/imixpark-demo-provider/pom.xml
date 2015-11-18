@@ -22,6 +22,7 @@
         <version>1.0.0</version>
     </parent>
     <artifactId>imixpark-demo-provider</artifactId>
+    <!-- 需要打 war 包，把这里改成 war -->
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <description>The demo provider module of imixpark project</description>
@@ -242,6 +243,7 @@
         <!-- PERSISTENCE end -->
     </dependencies>
 
+    <!-- 需要打 war 包，下面注释掉 -->
     <build>
         <plugins>
             <plugin>
