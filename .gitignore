@@ -17,6 +17,9 @@ target/
 *.iml
 *.iws
 
+# svn ignore
+.svn/
+
 # temp ignore
 *.log
 *.cache

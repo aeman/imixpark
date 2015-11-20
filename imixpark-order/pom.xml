@@ -28,9 +28,9 @@
 	<properties>
 		<skip_maven_deploy>true</skip_maven_deploy>
 	</properties>
-	<modules>
-		<module>imixpark-order-api</module>
-		<module>imixpark-order-provider</module>
-		<module>imixpark-order-consumer</module>
-	</modules>
+	<!--<modules>-->
+		<!--<module>imixpark-order-api</module>-->
+		<!--<module>imixpark-order-provider</module>-->
+		<!--<module>imixpark-order-consumer</module>-->
+	<!--</modules>-->
 </project>

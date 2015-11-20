@@ -194,6 +194,16 @@
             <artifactId>fst</artifactId>
         </dependency>
 
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+
         <!-- spring aop -->
         <dependency>
             <groupId>org.aspectj</groupId>

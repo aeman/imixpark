@@ -28,9 +28,9 @@
 	<properties>
 		<skip_maven_deploy>true</skip_maven_deploy>
 	</properties>
-	<modules>
-		<module>imixpark-pay-api</module>
-		<module>imixpark-pay-provider</module>
-		<module>imixpark-pay-consumer</module>
-	</modules>
+	<!--<modules>-->
+		<!--<module>imixpark-pay-api</module>-->
+		<!--<module>imixpark-pay-provider</module>-->
+		<!--<module>imixpark-pay-consumer</module>-->
+	<!--</modules>-->
 </project>
