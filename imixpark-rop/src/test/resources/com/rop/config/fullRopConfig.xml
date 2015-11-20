@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rop="http://www.bookegou.com/schema/rop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+      http://www.bookegou.com/schema/rop http://www.bookegou.com/schema/rop/rop-1.0.xsd">
+
+    <rop:annotation-driven
+            formatting-conversion-service="conversionService"
+            ext-error-base-name="i18n/rop/sampleRopError"
+            core-pool-size="2"
+            max-pool-size="100"
+            keep-alive-seconds="200"
+            queue-capacity="120"
+            service-timeout-seconds="10"
+            sign-enable="false"/>
+
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <!--将xxxx-yyyyyyy格式的电话转换为内部的Telephone对象-->
+                <bean class="cn.ebatech.rop.converter.TelephoneConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <rop:interceptors>
+        <bean class="cn.ebatech.rop.ReservedUserNameInterceptor"/>
+    </rop:interceptors>
+
+    <rop:listeners>
+        <bean class="cn.ebatech.rop.SamplePostInitializeEventListener"/>
+        <bean class="cn.ebatech.rop.SampleAfterDoServiceEventListener"/>
+    </rop:listeners>
+
+    <rop:sysparams
+            format-param-name="f1"
+            appkey-param-name="a1"
+            locale-param-name="l1"
+            method-param-name="m1"
+            sessionid-param-name="s1"
+            sign-param-name="s2"
+            version-param-name="v1"
+            />
+
+</beans>

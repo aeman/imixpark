@@ -17,26 +17,26 @@ package cn.ebatech.imixpark.demo.consumer;
 
 
 import cn.ebatech.imixpark.demo.model.User;
-import cn.ebatech.imixpark.demo.rest.UserRestService2;
+import cn.ebatech.imixpark.demo.service.UserService;
 import com.alibaba.dubbo.rpc.RpcContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class DemoAction {
 
-    private UserRestService2 userRestService2;
+    private UserService userService;
 
     @Autowired
-    public void setUserRestService2(UserRestService2 userRestService2) {
-        this.userRestService2 = userRestService2;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     public void start() throws Exception {
-        User user = new User(1L, "larrypage");
-        System.out.println("SUCCESS: registered user with id " + userRestService2.registerUser(user));
+        User user = new User(1L, "chenxuan");
+        System.out.println("SUCCESS: registered user with id " + userService.registerUser(user));
 
         RpcContext.getContext().setAttachment("clientName", "demo");
         RpcContext.getContext().setAttachment("clientImpl", "dubbox");
-        System.out.println("SUCCESS: got user " + userRestService2.getUser(1L));
+        System.out.println("SUCCESS: got user " + userService.getUser(1L));
     }
 
 }

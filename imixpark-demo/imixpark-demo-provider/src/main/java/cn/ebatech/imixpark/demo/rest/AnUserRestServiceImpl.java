@@ -17,22 +17,22 @@ package cn.ebatech.imixpark.demo.rest;
 
 import cn.ebatech.imixpark.demo.model.User;
 import cn.ebatech.imixpark.demo.service.UserService;
-import com.alibaba.dubbo.config.annotation.Service;
-import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 /**
  * @author lishen
  */
-@Service(protocol = {"rest", "dubbo"}, group = "annotationConfig", validation = "true")
-@Path("anusers")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
-@Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
+//@Service(protocol = {"rest", "dubbo"}, group = "annotationConfig", validation = "true")
+//@Path("anusers")
+//@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+//@Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
 public class AnUserRestServiceImpl implements UserRestService {
 
     private static final Logger logger = LoggerFactory.getLogger(AnUserRestServiceImpl.class);

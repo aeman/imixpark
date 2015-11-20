@@ -16,7 +16,7 @@
 package cn.ebatech.imixpark.demo.consumer;
 
 import cn.ebatech.imixpark.demo.model.User;
-import cn.ebatech.imixpark.demo.rest.UserRestService2;
+import cn.ebatech.imixpark.demo.service.UserService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Component;
 
@@ -29,13 +29,13 @@ import javax.annotation.PostConstruct;
 public class DemoJavaConfigAction {
 
     @Reference
-    private UserRestService2 userRestService2;
+    private UserService userService;
 
     @PostConstruct
     public void start() throws Exception {
         User user = new User(1L, "larrypage");
 
-        System.out.println("SUCESS: registered user with id " + userRestService2.registerUser(user));
-        System.out.println("SUCESS: got user " + userRestService2.getUser(1L));
+        System.out.println("SUCESS: registered user with id " + userService.registerUser(user));
+        System.out.println("SUCESS: got user " + userService.getUser(1L));
     }
 }

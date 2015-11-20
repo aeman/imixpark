@@ -39,13 +39,14 @@
 	</organization>
 
 	<modules>
-        <module>imixpark-common</module>
+    <module>imixpark-common</module>
 		<module>imixpark-user</module>
 		<module>imixpark-pay</module>
 		<module>imixpark-order</module>
 		<module>imixpark-market</module>
 		<module>imixpark-park</module>
 		<module>imixpark-demo</module>
+    <module>imixpark-rop</module>
 	</modules>
 
 	<properties>

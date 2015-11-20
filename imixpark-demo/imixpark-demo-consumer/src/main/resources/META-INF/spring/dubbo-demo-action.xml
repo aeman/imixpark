@@ -19,7 +19,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
+ <import resource="dubbo-demo-consumer.xml"></import>
+
     <bean class="cn.ebatech.imixpark.demo.consumer.DemoAction" init-method="start" >
-        <property name="userRestService2" ref="userRestService2" />
+        <property name="userService" ref="userService" />
     </bean>
 </beans>
