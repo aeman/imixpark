@@ -23,9 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author lishen
- */
+import java.util.List;
+
+
 @Component
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -35,10 +35,32 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMybatisDao userDao;
 
+    @Override
     public User getUser(Long id) {
         return userDao.get(id);
     }
 
+    @Override
+    public List<User> getAllUser() {
+        return userDao.getAll();
+    }
+
+    @Override
+    public User findUserByLoginName(String loginName) {
+        return userDao.getUserByLoginName(loginName);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userDao.update(user);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userDao.delete(id);
+    }
+
+    @Override
     public Long registerUser(User user) {
         userDao.save(user);
         System.out.println("[返回新增ID]：" + user.getId());

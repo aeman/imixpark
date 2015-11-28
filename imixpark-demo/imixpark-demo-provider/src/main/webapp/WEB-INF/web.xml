@@ -1,10 +1,9 @@
-<?xml version="1.0"?>
-<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd">
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
     <context-param>
-        <param-userName>contextConfigLocation</param-userName>
+        <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:/META-INF/spring/applicationContext.xml,
             classpath:/META-INF/spring/dubbo-demo-provider.xml
@@ -21,13 +20,13 @@
     </listener>
 
     <servlet>
-        <servlet-userName>dispatcher</servlet-userName>
+        <servlet-name>dispatcher</servlet-name>
         <servlet-class>com.alibaba.dubbo.remoting.http.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-userName>dispatcher</servlet-userName>
+        <servlet-name>dispatcher</servlet-name>
         <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
 </web-app>

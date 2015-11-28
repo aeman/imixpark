@@ -23,9 +23,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
-/**
- * @author lishen
- */
+
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class User implements Serializable {
@@ -37,6 +35,16 @@ public class User implements Serializable {
     @NotNull
     @Size(min = 6, max = 50)
     private String user_name;
+
+    @NotNull
+    @Size(min = 6, max = 50)
+    private String login_name;
+
+    @NotNull
+    private String pass_word;
+
+    @NotNull
+    private String pass_salt;
 
     public User() {
     }
@@ -68,5 +76,29 @@ public class User implements Serializable {
                 "id=" + id +
                 ", userName='" + user_name + '\'' +
                 ')';
+    }
+
+    public String getLogin_name() {
+        return login_name;
+    }
+
+    public void setLogin_name(String login_name) {
+        this.login_name = login_name;
+    }
+
+    public String getPass_word() {
+        return pass_word;
+    }
+
+    public void setPass_word(String pass_word) {
+        this.pass_word = pass_word;
+    }
+
+    public String getPass_salt() {
+        return pass_salt;
+    }
+
+    public void setPass_salt(String pass_salt) {
+        this.pass_salt = pass_salt;
     }
 }

@@ -22,9 +22,15 @@ public interface UserMybatisDao {
 
 	User get(Long id);
 
+	List<User> getAll();
+
+    User getUserByLoginName(String loginName);
+
 	List<User> search(Map<String, Object> parameters);
 
 	void save(User user);
+
+	void update(User user);
 
 	void delete(Long id);
 }

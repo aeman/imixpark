@@ -22,7 +22,7 @@
 
     <!--<import resource="classpath:/META-INF/spring/applicationContext.xml"/>-->
 
-    <dubbo:application name="demo-provider" owner="programmer" organization="dubbox"/>
+    <dubbo:application name="demo-provider" owner="programmer" organization="dubbox" logger="slf4j"/>
 
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
