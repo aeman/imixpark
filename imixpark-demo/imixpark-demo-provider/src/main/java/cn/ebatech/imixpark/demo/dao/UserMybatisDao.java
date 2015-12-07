@@ -6,6 +6,7 @@
 package cn.ebatech.imixpark.demo.dao;
 
 import cn.ebatech.imixpark.demo.model.User;
+import cn.ebatech.imixpark.common.dao.MyBatisRepository;
 
 import java.util.List;
 import java.util.Map;

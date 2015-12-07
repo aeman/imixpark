@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
-package cn.ebatech.imixpark.demo.dao;
+package cn.ebatech.imixpark.common.dao;
 
 import org.springframework.stereotype.Component;
 
