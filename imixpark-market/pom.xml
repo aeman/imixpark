@@ -28,9 +28,9 @@
 	<properties>
 		<skip_maven_deploy>true</skip_maven_deploy>
 	</properties>
-	<!--<modules>-->
-		<!--<module>imixpark-market-api</module>-->
-		<!--<module>imixpark-market-provider</module>-->
-		<!--<module>imixpark-market-consumer</module>-->
-	<!--</modules>-->
+	<modules>
+		<module>imixpark-market-api</module>
+		<module>imixpark-market-provider</module>
+		<module>imixpark-market-consumer</module>
+	</modules>
 </project>

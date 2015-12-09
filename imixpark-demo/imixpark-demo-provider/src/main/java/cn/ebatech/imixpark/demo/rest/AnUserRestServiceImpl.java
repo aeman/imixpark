@@ -26,9 +26,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-/**
- * @author lishen
- */
+
 //@Service(protocol = {"rest", "dubbo"}, group = "annotationConfig", validation = "true")
 //@Path("anusers")
 //@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})

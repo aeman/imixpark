@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="UserDao">
+<mapper namespace="cn.ebatech.imixpark.demo.dao.UserDao">
 	<select id="get" parameterType="long" resultType="User">
 		select id, user_name, login_name
 		from ss_user
@@ -36,8 +36,8 @@
 
 	<!-- 插入用户： 1.由数据库生成id并赋值到user对象 2.输入用对象, 嵌套属性表达式#{team.id} -->
 	<insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-		insert into ss_user (user_name, login_name)
-		values (#{user_name}, #{login_name})
+		insert into ss_user (user_name, login_name, pass_word, pass_salt)
+		values (#{user_name}, #{login_name}, #{pass_word}, #{pass_salt})
 	</insert>
 
 	<!-- 更新用户 -->

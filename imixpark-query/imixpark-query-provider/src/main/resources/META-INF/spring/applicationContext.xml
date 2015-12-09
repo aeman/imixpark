@@ -25,7 +25,7 @@
     </bean>
     <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.ebatech.imixpark.demo.dao"/>
+        <property name="basePackage" value="cn.ebatech.imixpark.query.dao"/>
         <property name="annotationClass" value="cn.ebatech.imixpark.common.dao.MyBatisRepository"/>
     </bean>
 

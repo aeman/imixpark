@@ -19,9 +19,7 @@ import cn.ebatech.imixpark.demo.model.User;
 
 import java.util.List;
 
-/**
- * @author lishen
- */
+
 public interface UserService {
     User getUser(Long id);
 

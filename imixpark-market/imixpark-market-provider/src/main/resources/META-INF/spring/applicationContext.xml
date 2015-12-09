@@ -13,7 +13,7 @@
     <description>Spring公共配置</description>
 
     <!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
-    <context:component-scan base-package="cn.ebatech.imixpark"/>
+    <context:component-scan base-package="cn.ebatech"/>
 
     <!-- MyBatis配置 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -26,7 +26,7 @@
     <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.ebatech.imixpark.demo.dao"/>
-        <property name="annotationClass" value="cn.ebatech.imixpark.common.dao.MyBatisRepository"/>
+        <property name="annotationClass" value="cn.ebatech.imixpark.demo.dao.MyBatisRepository"/>
     </bean>
 
     <!-- 事务管理器配置, Jdbc单数据源事务 -->

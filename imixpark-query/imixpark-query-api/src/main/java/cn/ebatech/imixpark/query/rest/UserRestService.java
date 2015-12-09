@@ -34,7 +34,7 @@ public interface UserRestService {
     /**
      * the request object is just used to test jax-rs injection.
      */
-    User getUser(@Min(value=1L, message="User ID must be greater than 1") Long id);
+    User getUser(@Min(value = 1L, message = "User ID must be greater than 1") Long id);
 
     Long registerUser(User user);
 }
