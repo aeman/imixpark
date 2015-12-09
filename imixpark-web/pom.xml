@@ -9,7 +9,6 @@
         <version>1.0.0</version>
     </parent>
 
-    <groupId>cn.ebatech</groupId>
     <artifactId>imixpark-web</artifactId>
     <name>${project.artifactId}</name>
     <version>1.0.0</version>
@@ -26,6 +25,12 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
+        </dependency>
+
+        <!-- SPRINGSIDE -->
+        <dependency>
+            <groupId>org.springside</groupId>
+            <artifactId>springside-core</artifactId>
         </dependency>
 
         <!-- WEB begin -->

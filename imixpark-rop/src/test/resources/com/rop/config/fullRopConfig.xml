@@ -20,18 +20,18 @@
         <property name="converters">
             <set>
                 <!--将xxxx-yyyyyyy格式的电话转换为内部的Telephone对象-->
-                <bean class="cn.ebatech.rop.converter.TelephoneConverter"/>
+                <bean class="cn.ebatech.imixpark.rop.converter.TelephoneConverter"/>
             </set>
         </property>
     </bean>
 
     <rop:interceptors>
-        <bean class="cn.ebatech.rop.ReservedUserNameInterceptor"/>
+        <bean class="cn.ebatech.imixpark.rop.ReservedUserNameInterceptor"/>
     </rop:interceptors>
 
     <rop:listeners>
-        <bean class="cn.ebatech.rop.SamplePostInitializeEventListener"/>
-        <bean class="cn.ebatech.rop.SampleAfterDoServiceEventListener"/>
+        <bean class="cn.ebatech.imixpark.rop.SamplePostInitializeEventListener"/>
+        <bean class="cn.ebatech.imixpark.rop.SampleAfterDoServiceEventListener"/>
     </rop:listeners>
 
     <rop:sysparams

@@ -6,7 +6,7 @@ package com.rop.config;
 
 import com.rop.RopContext;
 import com.rop.impl.AnnotationServletServiceRouter;
-import cn.ebatech.rop.request.Telephone;
+import cn.ebatech.imixpark.rop.request.Telephone;
 import org.testng.annotations.Test;
 import org.unitils.UnitilsTestNG;
 import org.unitils.database.annotations.Transactional;

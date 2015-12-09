@@ -66,7 +66,7 @@
         <property name="validationQuery" value="SELECT 1"/>
     </bean>
 
-    <bean id="userService" class="cn.ebatech.imixpark.demo.service.UserServiceImpl" />
-    <bean id="userRestService" class="cn.ebatech.imixpark.demo.rest.UserRestServiceImpl" />
-    <bean id="userRestService2" class="cn.ebatech.imixpark.demo.rest.UserRestService2Impl" />
+    <bean id="userService" class="UserServiceImpl" />
+    <bean id="userRestService" class="UserRestServiceImpl" />
+    <bean id="userRestService2" class="UserRestService2Impl" />
 </beans>

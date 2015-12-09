@@ -4,8 +4,8 @@
  */
 package com.rop.sample;
 
-import cn.ebatech.rop.SampleAppSecretManager;
-import cn.ebatech.rop.SampleUserService;
+import cn.ebatech.imixpark.rop.SampleAppSecretManager;
+import cn.ebatech.imixpark.rop.SampleUserService;
 import com.rop.request.UploadFile;
 import com.rop.security.MainErrorType;
 import com.rop.utils.RopUtils;
@@ -195,7 +195,7 @@ public class UserServiceRawClient {
     }
 
     /**
-     * 测试自定义的类型转换器{@link cn.ebatech.rop.converter.TelephoneConverter}
+     * 测试自定义的类型转换器{@link cn.ebatech.imixpark.rop.converter.TelephoneConverter}
      */
     @Test
     public void testCustomConverter() {
@@ -221,9 +221,9 @@ public class UserServiceRawClient {
     }
 
     /**
-     * 验证内部格式为XML的请求参数会正确绑定到RopRequest的内部属性对象中，参见{@link cn.ebatech.rop.request.CreateUserRequest#address}
+     * 验证内部格式为XML的请求参数会正确绑定到RopRequest的内部属性对象中，参见{@link cn.ebatech.imixpark.rop.request.CreateUserRequest#address}
      *
-     * @see cn.ebatech.rop.request.Address
+     * @see cn.ebatech.imixpark.rop.request.Address
      */
     @Test
     public void testServiceXmlRequestAttr() {
@@ -303,7 +303,7 @@ public class UserServiceRawClient {
     }
 
     /**
-     * 由于{@link cn.ebatech.rop.request.CreateUserRequest#password}标注了{@link com.rop.annotation.IgnoreSign},所以Rop
+     * 由于{@link cn.ebatech.imixpark.rop.request.CreateUserRequest#password}标注了{@link com.rop.annotation.IgnoreSign},所以Rop
      * 会忽略对password请求参数进行签名验证。
      */
     @Test
@@ -372,7 +372,7 @@ public class UserServiceRawClient {
     /**
      * 请求参数违反合法性校验限制时，返回相应的错误报文
      * 服务端限制salary的格式必须是“#,###.##”，且必须在1000.00和100000.00之间，
-     * 参见{@link cn.ebatech.rop.request.CreateUserRequest#salary}
+     * 参见{@link cn.ebatech.imixpark.rop.request.CreateUserRequest#salary}
      */
     @Test
     public void testParamConstrainViolation() {
@@ -475,7 +475,7 @@ public class UserServiceRawClient {
     /**
      * 请求参数违反合法性校验限制时，返回相应的错误报文
      * 服务端限制salary的格式必须是“#,###.##”，且必须在1000.00和100000.00之间，
-     * 参见{@link cn.ebatech.rop.request.CreateUserRequest#salary}
+     * 参见{@link cn.ebatech.imixpark.rop.request.CreateUserRequest#salary}
      */
     @Test
     public void testInvalidSign() {
@@ -501,7 +501,7 @@ public class UserServiceRawClient {
 
     /**
      * 在{@link SampleAppSecretManager}中，我们模拟让sessionId为mockSessionId1拥有访问
-     * {@link SampleUserService#addUser(cn.ebatech.rop.request.CreateUserRequest)}的权限，而sessionId为mockSessionId2时则没有这个权限。
+     * {@link SampleUserService#addUser(cn.ebatech.imixpark.rop.request.CreateUserRequest)}的权限，而sessionId为mockSessionId2时则没有这个权限。
      * 将返回会话错误的响应报文。
      */
     @Test
@@ -586,7 +586,7 @@ public class UserServiceRawClient {
     }
 
     /**
-     * “jhon”是{@link SampleUserService#addUser(cn.ebatech.rop.request.CreateUserRequest)} 服务方法预留的用户名，
+     * “jhon”是{@link SampleUserService#addUser(cn.ebatech.imixpark.rop.request.CreateUserRequest)} 服务方法预留的用户名，
      * 验证其会返回正确的业务错误码。
      */
     @Test

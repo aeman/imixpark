@@ -4,24 +4,24 @@
  */
 package com.rop.sample;
 
+import cn.ebatech.imixpark.rop.converter.TelephoneConverter;
+import cn.ebatech.imixpark.rop.request.*;
+import cn.ebatech.imixpark.rop.response.CreateUserResponse;
+import cn.ebatech.imixpark.rop.response.LogonResponse;
+import cn.ebatech.imixpark.rop.response.UploadUserPhotoResponse;
+import cn.ebatech.imixpark.rop.response.UserListResponse;
 import com.rop.MessageFormat;
 import com.rop.client.ClientRequest;
 import com.rop.client.CompositeResponse;
 import com.rop.client.DefaultRopClient;
 import com.rop.request.UploadFile;
 import com.rop.response.ErrorResponse;
-import cn.ebatech.rop.converter.TelephoneConverter;
-import cn.ebatech.rop.request.*;
-import cn.ebatech.rop.response.CreateUserResponse;
-import cn.ebatech.rop.response.LogonResponse;
-import cn.ebatech.rop.response.UploadUserPhotoResponse;
-import cn.ebatech.rop.response.UserListResponse;
 import com.rop.security.MainErrorType;
 import org.springframework.core.io.ClassPathResource;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import static org.testng.Assert.*;
 
