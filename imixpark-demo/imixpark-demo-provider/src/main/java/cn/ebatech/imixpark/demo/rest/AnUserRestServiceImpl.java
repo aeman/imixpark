@@ -25,6 +25,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import java.util.List;
+import java.util.Map;
 
 
 //@Service(protocol = {"rest", "dubbo"}, group = "annotationConfig", validation = "true")
@@ -48,5 +50,19 @@ public class AnUserRestServiceImpl implements UserRestService {
     @Path("register")
     public Long registerUser(User user) {
         return userService.registerUser(user);
+    }
+
+    @GET
+    @Path("all")
+    public List<User> getAllUser() {
+        return userService.getAllUser();
+    }
+
+    @POST
+    @Path("search")
+    public List<User> searchUser(Map<String, Object> params) {
+        String loginName = String.valueOf(params.get("login_name"));
+        String name = String.valueOf(params.get("user_name"));
+        return userService.searchUser(loginName, name);
     }
 }

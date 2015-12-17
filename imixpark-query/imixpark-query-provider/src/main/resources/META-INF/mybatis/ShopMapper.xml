@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ebatech.imixpark.queryt.dao.ShopMybatisDao">
+
+	<select id="getShop" parameterType="long" resultType="Shop">
+		select id, shop_name
+		from ma_shop
+		where id=#{id}
+	</select>
+
+	<select id="search" parameterType="map" resultType="Shop">
+		select id, shop_name
+		from ma_shop
+	</select>
+
+</mapper> 

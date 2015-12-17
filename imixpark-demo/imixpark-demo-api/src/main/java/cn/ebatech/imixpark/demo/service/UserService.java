@@ -32,4 +32,6 @@ public interface UserService {
     void deleteUser(Long id);
 
     Long registerUser(User user);
+
+    List<User> searchUser(String loginName, String name);
 }

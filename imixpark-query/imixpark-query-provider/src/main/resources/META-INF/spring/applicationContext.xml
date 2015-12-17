@@ -69,4 +69,14 @@
     <bean id="userService" class="cn.ebatech.imixpark.query.service.UserServiceImpl" />
     <bean id="userRestService" class="cn.ebatech.imixpark.query.rest.UserRestServiceImpl" />
     <bean id="userRestService2" class="cn.ebatech.imixpark.query.rest.UserRestService2Impl" />
+    
+    <bean id="commodityService" class="cn.ebatech.imixpark.query.service.CommodityServiceImpl"/>
+    <bean id="mallService" class="cn.ebatech.imixpark.query.service.MallServiceImpl"/>
+    <bean id="merchantService" class="cn.ebatech.imixpark.query.service.MerchantServiceImpl"/>
+    <bean id="shopService" class="cn.ebatech.imixpark.query.service.ShopServiceImpl"/>
+    
+    <bean id="commodityRestService" class="cn.ebatech.imixpark.query.rest.CommodityRestServiceImpl"/>
+    <bean id="mallRestService" class="cn.ebatech.imixpark.query.rest.MallRestServiceImpl"/>
+    <bean id="merchantRestService" class="cn.ebatech.imixpark.query.rest.MerchantRestServiceImpl"/>
+    <bean id="shopRestService" class="cn.ebatech.imixpark.query.rest.ShopRestServiceImpl"/>
 </beans>

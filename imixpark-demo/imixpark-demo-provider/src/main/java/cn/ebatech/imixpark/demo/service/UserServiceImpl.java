@@ -17,6 +17,7 @@ package cn.ebatech.imixpark.demo.service;
 
 import cn.ebatech.imixpark.demo.dao.UserDao;
 import cn.ebatech.imixpark.demo.model.User;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Component
@@ -65,5 +67,15 @@ public class UserServiceImpl implements UserService {
         userDao.save(user);
         System.out.println("[返回新增ID]：" + user.getId());
         return user.getId();
+    }
+
+    @Override
+    public List<User> searchUser(String loginName, String name) {
+        Map<String, Object> parameters = Maps.newHashMap();
+        parameters.put("login_name", loginName);
+        if (!name.equals("1")) {
+            parameters.put("user_name", name);
+        }
+        return userDao.search(parameters);
     }
 }

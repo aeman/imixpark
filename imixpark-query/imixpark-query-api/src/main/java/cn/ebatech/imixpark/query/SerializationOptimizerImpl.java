@@ -15,6 +15,10 @@
  */
 package cn.ebatech.imixpark.query;
 
+import cn.ebatech.imixpark.query.model.Commodity;
+import cn.ebatech.imixpark.query.model.Mall;
+import cn.ebatech.imixpark.query.model.Merchant;
+import cn.ebatech.imixpark.query.model.Shop;
 import cn.ebatech.imixpark.query.model.User;
 import com.alibaba.dubbo.common.serialize.support.SerializationOptimizer;
 
@@ -32,6 +36,10 @@ public class SerializationOptimizerImpl implements SerializationOptimizer {
     public Collection<Class> getSerializableClasses() {
         List<Class> classes = new LinkedList<Class>();
         classes.add(User.class);
+        classes.add(Commodity.class);
+        classes.add(Mall.class);
+        classes.add(Merchant.class);
+        classes.add(Shop.class);
         return classes;
     }
 }
