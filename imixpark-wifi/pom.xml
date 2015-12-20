@@ -21,16 +21,15 @@
 		<artifactId>imixpark-parent</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>imixpark-park</artifactId>
+	<artifactId>imixpark-wifi</artifactId>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
-	<description>The park module of imixpark project</description>
+	<description>The wifi module of imixpark project</description>
 	<properties>
 		<skip_maven_deploy>true</skip_maven_deploy>
 	</properties>
-	<!--<modules>-->
-		<!--<module>imixpark-park-api</module>-->
-		<!--<module>imixpark-park-provider</module>-->
-		<!--<module>imixpark-park-consumer</module>-->
-	<!--</modules>-->
+	<modules>
+		<module>imixpark-wifi-api</module>
+		<module>imixpark-wifi-provider</module>
+	</modules>
 </project>
