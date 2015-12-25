@@ -1,6 +1,7 @@
 package cn.ebatech.imixpark.demo.rest;
 
 import cn.ebatech.imixpark.demo.model.User;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -25,4 +26,6 @@ public interface UserRestService {
     List<User> getAllUser();
 
     List<User> searchUser(Map<String, Object> params);
+
+    void uploadFile(MultipartFormDataInput input);
 }

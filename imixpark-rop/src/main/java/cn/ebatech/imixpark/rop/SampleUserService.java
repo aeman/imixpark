@@ -51,7 +51,7 @@ public class SampleUserService extends AbstractUserService{
 //    }
 
     private static final String USER_NAME_RESERVED = "USER_NAME_RESERVED";
-    private List reservesUserNames = Arrays.asList(new String[]{"toms", "jhon"});
+    private List reservesUserNames = Arrays.asList("toms", "jhon");
 
 
     public Object getSession(LogonRequest request) {

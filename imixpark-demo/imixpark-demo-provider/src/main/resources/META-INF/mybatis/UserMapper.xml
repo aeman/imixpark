@@ -4,18 +4,18 @@
 <!-- namespace必须指向Dao接口 -->
 <mapper namespace="cn.ebatech.imixpark.demo.dao.UserDao">
 	<select id="get" parameterType="long" resultType="User">
-		select id, user_name, login_name
+		select id, user_name, login_name, pass_word, pass_salt
 		from ss_user
 		where id=#{id}
 	</select>
 
     <select id="getAll" resultType="User">
-        select id, user_name, login_name
+        select id, user_name, login_name, pass_word, pass_salt
         from ss_user
     </select>
 
     <select id="getUserByLoginName" parameterType="string" resultType="User">
-        select id, user_name, login_name
+        select id, user_name, login_name, pass_word, pass_salt
         from ss_user
         where login_name=#{login_name}
     </select>

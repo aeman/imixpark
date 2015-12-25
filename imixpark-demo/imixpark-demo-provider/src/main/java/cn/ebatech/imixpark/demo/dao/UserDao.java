@@ -18,7 +18,7 @@ public interface UserDao {
 
 	List<User> getAll();
 
-    User getUserByLoginName(String loginName);
+	User getUserByLoginName(String loginName);
 
 	List<User> search(Map<String, Object> parameters);
 

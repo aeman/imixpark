@@ -95,11 +95,7 @@ public class DateUtils {
      */
     public static boolean lessThan(String time1, String time2) {
         if (StringUtils.isEmpty(time1)) {
-            if (StringUtils.isEmpty(time2)) {
-                return false;
-            } else {
-                return true;
-            }
+            return !StringUtils.isEmpty(time2);
         } else {
             return time1.compareTo(time2) < 0;
         }
@@ -116,11 +112,7 @@ public class DateUtils {
      */
     public static boolean greaterThan(String time1, String time2) {
         if (StringUtils.isEmpty(time1)) {
-            if (StringUtils.isEmpty(time2)) {
-                return false;
-            } else {
-                return true;
-            }
+            return !StringUtils.isEmpty(time2);
         } else {
             return time1.compareTo(time2) > 0;
         }

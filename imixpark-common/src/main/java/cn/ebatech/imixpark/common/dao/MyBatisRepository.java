@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.lang.annotation.*;
 
 /**
- * 标识MyBatis的DAO,方便{@link org.mybatis.spring.mapper.MapperScannerConfigurer}的扫描。
+ * 标识MyBatis的DAO,方便{ org.mybatis.spring.mapper.MapperScannerConfigurer}的扫描。
  * 
  * @author calvin
  * 

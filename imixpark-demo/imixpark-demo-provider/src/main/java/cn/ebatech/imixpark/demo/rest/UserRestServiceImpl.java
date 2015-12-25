@@ -3,6 +3,7 @@ package cn.ebatech.imixpark.demo.rest;
 import cn.ebatech.imixpark.demo.model.User;
 import cn.ebatech.imixpark.demo.service.UserService;
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,12 @@ public class UserRestServiceImpl implements UserRestService {
         String loginName = String.valueOf(params.get("login_name"));
         String name = String.valueOf(params.get("user_name"));
         return userService.searchUser(loginName, name);
+    }
+
+    @POST
+    @Path("upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public void uploadFile(MultipartFormDataInput input) {
+        userService.uploadFile(input);
     }
 }
