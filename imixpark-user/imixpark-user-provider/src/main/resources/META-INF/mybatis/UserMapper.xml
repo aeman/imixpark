@@ -2,26 +2,69 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
+
 <mapper namespace="cn.ebatech.imixpark.user.dao.UserDao">
-	<select id="get" parameterType="long" resultType="User">
+
+
+
+	<resultMap type="cn.ebatech.imixpark.common.model.user.User"
+		id="UserMap">
+		<id property="id" column="USER_ID" />
+		<result property="Mall_id" column="MALL_ID" />
+		<result property="Name" column="USER_NAME" />
+		<result property="Alias" column="USER_ALIAS" />
+		<result property="card_no" column="USER_CARD_NO" />
+		<result property="Sex" column="USER_SEX" />
+		<result property="Tel" column="USER_TEL" />
+		<result property="Create_Time" column="USER_CREATE_TIME" />
+		<result property="Birthday" column="USER_BIRTHDAY" />
+		<result property="Growth_Value" column="USER_GROWTH_VALUE" />
+		<result property="Regedit_Address" column="USER_REGEDIT_ADDRESS" />
+		<result property="Type" column="USER_TYPE" />
+		<result property="Pwd" column="USER_PWD" />
+		<result property="Picture" column="USER_PICTURE" />
+		<result property="Last_Login_Time" column="USER_LAST_LOGIN_TIME" />
+		<result property="Cardno" column="USER_CARDNO" />
+		<result property="Constellation" column="USER_CONSTELLATION" />
+		<result property="Level" column="USER_LEVEL" />
+		<result property="Sum_Integral" column="USER_SUM_INTEGRAL" />
+		<!-- 订单 -->
+		<!-- <collection property="cps" ofType="cn.ebatech.imixpark.common.model.user.Consumption"> 
+			<result property="id" column="id" /> <result property="name" column="name" 
+			/> <result property="createTime" column="createTime" /> </collection> <collection 
+			property="Integrals" ofType="cn.ebatech.imixpark.common.model.user.Integral"> 
+			<result property="Pwd" column="USER_PWD" /> <result property="Picture" column="USER_PICTURE" 
+			/> <result property="Last_Login_Time" column="USER_LAST_LOGIN_TIME" /> <result 
+			property="Cardno" column="USER_CARDNO" /> <result property="Constellation" 
+			column="USER_CONSTELLATION" /> <result property="Level" column="USER_LEVEL" 
+			/> <result property="Sum_Integral" column="USER_SUM_INTEGRAL" /> </collection> -->
+	</resultMap>
+	<select id="getUser" parameterType="int" resultMap="UserMap">
+		SELECT *
+		FROM
+		user_info where USER_ID=#{id}
+	</select>
+	<!-- <select id="getUser" parameterType="long" resultMap="UserMap"> SELECT 
+		us.*,intl.*,cop.* FROM user_info us LEFT JOIN consumption cop ON us.USER_ID=cop.USER_ID 
+		LEFT JOIN integral intl ON us.USER_ID=inte.USER_ID WHERE us.USER_ID=#{id} 
+		</select> -->
+
+	<select id="getAll" resultType="cn.ebatech.imixpark.common.model.user.User">
 		select id, user_name, login_name
 		from ss_user
-		where id=#{id}
 	</select>
 
-    <select id="getAll" resultType="User">
-        select id, user_name, login_name
-        from ss_user
-    </select>
-
-    <select id="getUserByLoginName" parameterType="string" resultType="User">
-        select id, user_name, login_name
-        from ss_user
-        where login_name=#{login_name}
-    </select>
+	<select id="getUserByLoginName" parameterType="string"
+		resultType="cn.ebatech.imixpark.common.model.user.User">
+		select id, user_name, login_name
+		from ss_user
+		where
+		login_name=#{login_name}
+	</select>
 
 	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
-	<select id="search" parameterType="map" resultType="User">
+	<select id="search" parameterType="map"
+		resultType="cn.ebatech.imixpark.common.model.user.User">
 		select id, user_name, login_name, pass_word, pass_salt
 		from ss_user
 		<where>
@@ -35,19 +78,444 @@
 	</select>
 
 	<!-- 插入用户： 1.由数据库生成id并赋值到user对象 2.输入用对象, 嵌套属性表达式#{team.id} -->
-	<insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-		insert into ss_user (user_name, login_name, pass_word, pass_salt)
-		values (#{user_name}, #{login_name}, #{pass_word}, #{pass_salt})
+	<insert id="save" parameterType="cn.ebatech.imixpark.common.model.user.User"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into ss_user (user_name,
+		login_name, pass_word, pass_salt)
+		values (#{user_name}, #{login_name},
+		#{pass_word}, #{pass_salt})
 	</insert>
 
 	<!-- 更新用户 -->
-	<update id="update" parameterType="User">
-		update ss_user set user_name = #{user_name}, login_name = #{login_name}
+	<update id="update" parameterType="cn.ebatech.imixpark.common.model.user.User">
+		update ss_user set user_name =
+		#{user_name}, login_name = #{login_name}
 		where id = #{id}
 	</update>
 
 	<!-- 删除用户 -->
 	<delete id="delete" parameterType="long">
-	     delete from ss_user where id=#{id}
+		delete from ss_user where
+		id=#{id}
 	</delete>
+
+	<!-- 删除用户 -->
+	<delete id="test" parameterType="long">
+		select * from ssssss
+	</delete>
+
+	<update id="updateUser" parameterType="cn.ebatech.imixpark.common.model.user.User">
+		UPDATE user_info SET
+		USER_ALIAS=#{Alias},
+		USER_SEX=#{Sex},
+		USER_BIRTHDAY=#{Birthday}
+		WHERE
+		USER_ID=#{id}
+	</update>
+
+
+	<!--List:forech中的collection属性类型是List,collection的值必须是:list,item的值可以随意,Dao接口中参数名字随意 -->
+	<insert id="addBaShops" parameterType="java.util.List">
+	
+	 insert into ba_shop (id, spjm,  spname, spename, status,
+		isvalid, str, floor, regional, location, shape, length,
+		easy, spxz, zqjh, hygh, ytgh, zlgh, kind, jzarea, syarea,
+		zjarea, arealx, rentdw, rentts, exprent, expsj, currencies,
+		powerk, powersl, cablessize1, cablespcs1, cablessize2, cablespcs2,
+		cablessize3, cablespcs3, waterflg, watermemo, watersl,
+		watersize,
+		fcutype,
+		fcusl,
+		fcurt,
+		airtype,
+		airsl,
+		airrt,
+		centertype,
+		centersl,
+		centerrt,
+		supplywh,
+		returnwh,
+		kitflg,
+		kitwh,
+		kitmemo,
+		firesl1,
+		firesl2,
+		firesl3,
+		smokesl,
+		trapflg,
+		linesl1,
+		linesl2,
+		possl,
+		is_xssy,
+		hth,
+		memo,
+		oprid,
+		adtid,
+		postid,
+		last_modified,
+		ssld,
+		last_billid,
+		last_billno,
+		last_operid,
+		oprDate,
+		adtDate,
+		source,
+		ismark )   
+    values  
+    <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.id},#{item.spjm, jdbcType=VARCHAR},
+			#{item.spname, jdbcType=VARCHAR},
+			#{item.spename, jdbcType=VARCHAR},
+			#{item.status, jdbcType=VARCHAR},
+			#{item.isvalid , jdbcType=VARCHAR},
+			#{item.str, jdbcType=VARCHAR},
+			#{item.floor, jdbcType=VARCHAR},
+			#{item.regional, jdbcType=VARCHAR},
+			#{item.location, jdbcType=VARCHAR},
+			#{item.shape, jdbcType=VARCHAR},
+			#{item.length, jdbcType=VARCHAR},
+			#{item.easy, jdbcType=VARCHAR},
+			#{item.spxz, jdbcType=VARCHAR},
+			#{item.zqjh, jdbcType=VARCHAR},
+			#{item.hygh, jdbcType=VARCHAR},
+			#{item.ytgh, jdbcType=VARCHAR},
+			#{item.zlgh, jdbcType=VARCHAR},
+			#{item.kind, jdbcType=VARCHAR},
+			#{item.jzarea, jdbcType=FLOAT},
+			#{item.syarea, jdbcType=FLOAT},
+			#{item.zjarea, jdbcType=FLOAT},
+			#{item.arealx, jdbcType=VARCHAR},
+			#{item.rentdw, jdbcType=VARCHAR},
+			#{item.rentts, jdbcType=FLOAT},
+			#{item.exprent, jdbcType=FLOAT},
+			#{item.expsj, jdbcType=FLOAT},
+			#{item.currencies, jdbcType=VARCHAR},
+			#{item.powerk, jdbcType=FLOAT},
+			#{item.powersl, jdbcType=FLOAT},
+			#{item.cablessize1, jdbcType=VARCHAR},
+			#{item.cablespcs1, jdbcType=FLOAT},
+			#{item.cablessize2, jdbcType=VARCHAR},
+			#{item.cablespcs2, jdbcType=FLOAT},
+			#{item.cablessize3, jdbcType=VARCHAR},
+			#{item.cablespcs3, jdbcType=FLOAT},
+			#{item.waterflg, jdbcType=VARCHAR},
+			#{item.watermemo, jdbcType=VARCHAR},
+			#{item.watersl, jdbcType=FLOAT},
+			#{item.watersize, jdbcType=VARCHAR},
+			#{item.fcutype, jdbcType=VARCHAR},
+			#{item.fcusl, jdbcType=FLOAT},
+			#{item.fcurt, jdbcType=FLOAT},
+			#{item.airtype, jdbcType=VARCHAR},
+			#{item.airsl, jdbcType=FLOAT},
+			#{item.airrt, jdbcType=FLOAT},
+			#{item.centertype, jdbcType=VARCHAR},
+			#{item.centersl, jdbcType=FLOAT},
+			#{item.centerrt, jdbcType=FLOAT},
+			#{item.supplywh, jdbcType=VARCHAR},
+			#{item.returnwh, jdbcType=VARCHAR},
+			#{item.kitflg, jdbcType=VARCHAR},
+			#{item.kitwh, jdbcType=VARCHAR},
+			#{item.kitmemo, jdbcType=VARCHAR},
+			#{item.firesl1, jdbcType=FLOAT},
+			#{item.firesl2, jdbcType=FLOAT},
+			#{item.firesl3, jdbcType=FLOAT},
+			#{item.smokesl, jdbcType=FLOAT},
+			#{item.trapflg, jdbcType=VARCHAR},
+			#{item.linesl1, jdbcType=FLOAT},
+			#{item.linesl2, jdbcType=FLOAT},
+			#{item.possl, jdbcType=FLOAT},
+			#{item.is_xssy, jdbcType=VARCHAR},
+			#{item.hth, jdbcType=VARCHAR},
+			#{item.memo, jdbcType=VARCHAR},
+			#{item.oprid, jdbcType=VARCHAR},
+			#{item.adtid, jdbcType=VARCHAR},
+			#{item.postid, jdbcType=VARCHAR},
+			#{item.last_modified,jdbcType=DATE},
+			#{item.ssld, jdbcType=VARCHAR},
+			#{item.last_billid, jdbcType=VARCHAR},
+			#{item.last_billno, jdbcType=VARCHAR},
+			#{item.last_operid, jdbcType=VARCHAR},
+			#{item.oprDate, jdbcType=DATE},
+			#{item.adtDate, jdbcType=DATE},
+			#{item.source, jdbcType=VARCHAR},
+			#{item.ismark, jdbcType=VARCHAR} )  
+    </foreach>  
+	</insert>
+
+
+<insert id="addsupplierbases" parameterType="java.util.List">
+	
+	 insert into supplierbase (
+	 sbpwd,     
+sbcname,   
+sbename,   
+sbsname,   
+sbskey,    
+sbstatus,  
+sbflag,    
+sbsubject, 
+sbanalcode,
+sbregcode, 
+sbcatcode, 
+sbqydm,    
+sbekindcode
+sbtradecode
+sbetypecode
+sbyyzzno,  
+zcrq,      
+sbzcsb,    
+sbzczb,    
+sbjyfw,    
+sbjygm,    
+sbtaxpayer,
+sbtaxrate, 
+sbtaxno,   
+sbbank,    
+sbaccntno, 
+sbaddr,    
+sbtel,     
+sbfax,     
+sbzip,     
+sbcable,   
+sbemail,   
+sburl,     
+sbfrdb,    
+sbfrdbsfz, 
+sbfrdblxfs,
+sblxr,     
+sblxrzw,   
+sblxrsfz,  
+sblxfs,    
+sbyjrq,    
+sbwmid1,   
+sbwmid2,   
+sbwmid3,   
+sbwmid4,   
+sbwmid5,   
+sbjszq,    
+sbljsrq,   
+sbdhzq,    
+sbdbsend,  
+sbyjcgy,   
+sbcgyyj,   
+sbzgjl,    
+sbzgljyj,  
+sbshr,     
+sbshrq,    
+sblry,     
+sblrrq,    
+sbxgr,     
+sbxgrq,    
+sbjhsxq,   
+sbsxksrq,  
+sbsxjsrq,  
+sbfjhrq,   
+sbljhrq,   
+sbzzrq,    
+sbgqrq,    
+sbtsrq,    
+sbttrq,    
+sbmemo,    
+sbvc1,     
+sbvc2,     
+sbvc3,     
+sbvc4,     
+sbvc5,     
+sbvc6,     
+sbvc7,     
+sbvc8,     
+sbvc9,     
+sbvc10,    
+sbvc11,    
+sbvc12,    
+sbvc13,    
+sbvc14,    
+sbvc15,    
+sbvc16,    
+sbn1,      
+sbn2,      
+sbn3,      
+sbn4,      
+sbn5,      
+sbn6,      
+sbn7,      
+sbn8,      
+sbn9,      
+sbn10,     
+sbn11,     
+sbn12,     
+sbn13,     
+sbn14,     
+sbn15,     
+sbn16,     
+wmid5,     
+isgathering
+gatfundcorp
+gatfundbank
+gataccntno,
+zzaddr,    
+linkfax,   
+linkemail, 
+cwlinkman, 
+cwlinkduty,
+cwlinktel, 
+cwlinkfax, 
+cwlinkemail
+applydept, 
+producerid,
+sbyjcgy2,  
+grade,     
+sbnbtype,  
+sbiftt,    
+sbcomname, 
+sbcomename,
+sbyt,      
+sbxfdx,    
+sbyxmf,    
+sbyxrent,  
+sbyxmon,   
+sbyxmj,    
+sbopendesc,
+sbppdesc,  
+sbjfyq
+	 )   
+    values  
+    <foreach collection="list" item="item" index="index" separator="," >  
+        (
+        #{item.sbid},
+#{item.sbpwd},
+#{item.sbcname},
+#{item.sbename},
+#{item.sbsname},
+#{item.sbskey},
+#{item.sbstatus},
+#{item.sbflag},
+#{item.sbsubject},
+#{item.sbanalcode},
+#{item.sbregcode},
+#{item.sbcatcode},
+#{item.sbqydm},
+#{item.sbekindcode},
+#{item.sbtradecode},
+#{item.sbetypecode},
+#{item.sbyyzzno},
+#{item.zcrq},
+#{item.sbzcsb},
+#{item.sbzczb},
+#{item.sbjyfw},
+#{item.sbjygm},
+#{item.sbtaxpayer},
+#{item.sbtaxrate},
+#{item.sbtaxno},
+#{item.sbbank},
+#{item.sbaccntno},
+#{item.sbaddr},
+#{item.sbtel},
+#{item.sbfax},
+#{item.sbzip},
+#{item.sbcable},
+#{item.sbemail},
+#{item.sburl},
+#{item.sbfrdb},
+#{item.sbfrdbsfz},
+#{item.sbfrdblxfs},
+#{item.sblxr},
+#{item.sblxrzw},
+#{item.sblxrsfz},
+#{item.sblxfs},
+#{item.sbyjrq},
+#{item.sbwmid1},
+#{item.sbwmid2},
+#{item.sbwmid3},
+#{item.sbwmid4},
+#{item.sbwmid5},
+#{item.sbjszq},
+#{item.sbljsrq},
+#{item.sbdhzq},
+#{item.sbdbsend},
+#{item.sbyjcgy},
+#{item.sbcgyyj},
+#{item.sbzgjl},
+#{item.sbzgljyj},
+#{item.sbshr},
+#{item.sbshrq},
+#{item.sblry},
+#{item.sblrrq},
+#{item.sbxgr},
+#{item.sbxgrq},
+#{item.sbjhsxq},
+#{item.sbsxksrq},
+#{item.sbsxjsrq},
+#{item.sbfjhrq},
+#{item.sbljhrq},
+#{item.sbzzrq},
+#{item.sbgqrq},
+#{item.sbtsrq},
+#{item.sbttrq},
+#{item.sbmemo},
+#{item.sbvc1},
+#{item.sbvc2},
+#{item.sbvc3},
+#{item.sbvc4},
+#{item.sbvc5},
+#{item.sbvc6},
+#{item.sbvc7},
+#{item.sbvc8},
+#{item.sbvc9},
+#{item.sbvc10},
+#{item.sbvc11},
+#{item.sbvc12},
+#{item.sbvc13},
+#{item.sbvc14},
+#{item.sbvc15},
+#{item.sbvc16},
+#{item.sbn1},
+#{item.sbn2},
+#{item.sbn3},
+#{item.sbn4},
+#{item.sbn5},
+#{item.sbn6},
+#{item.sbn7},
+#{item.sbn8},
+#{item.sbn9},
+#{item.sbn10},
+#{item.sbn11},
+#{item.sbn12},
+#{item.sbn13},
+#{item.sbn14},
+#{item.sbn15},
+#{item.sbn16},
+#{item.wmid5},
+#{item.isgathering},
+#{item.gatfundcorp},
+#{item.gatfundbank},
+#{item.gataccntno},
+#{item.zzaddr},
+#{item.linkfax},
+#{item.linkemail},
+#{item.cwlinkman},
+#{item.cwlinkduty},
+#{item.cwlinktel},
+#{item.cwlinkfax},
+#{item.cwlinkemail},
+#{item.applydept},
+#{item.producerid},
+#{item.sbyjcgy2},
+#{item.grade},
+#{item.sbnbtype},
+#{item.sbiftt},
+#{item.sbcomname},
+#{item.sbcomename},
+#{item.sbyt},
+#{item.sbxfdx},
+#{item.sbyxmf},
+#{item.sbyxrent},
+#{item.sbyxmon},
+#{item.sbyxmj},
+#{item.sbopendesc},
+#{item.sbppdesc},
+#{item.sbjfyq}
+			)  
+    </foreach>  
+	</insert>
 </mapper> 

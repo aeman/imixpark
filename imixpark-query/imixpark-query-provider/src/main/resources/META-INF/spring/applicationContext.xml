@@ -13,13 +13,13 @@
     <description>Spring公共配置</description>
 
     <!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
-    <context:component-scan base-package="cn.ebatech.imixpark"/>
+    <context:component-scan base-package="cn.ebatech"/>
 
     <!-- MyBatis配置 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-        <property name="typeAliasesPackage" value="cn.ebatech.imixpark.query.model"/>
+        <property name="typeAliasesPackage" value="cn.ebatech.imixpark.common.model"/>
         <!-- 显式指定Mapper文件位置 -->
         <property name="mapperLocations" value="classpath:/META-INF/mybatis/*Mapper.xml"/>
     </bean>
@@ -66,17 +66,24 @@
         <property name="validationQuery" value="SELECT 1"/>
     </bean>
 
-    <bean id="userService" class="cn.ebatech.imixpark.query.service.UserServiceImpl" />
-    <bean id="userRestService" class="cn.ebatech.imixpark.query.rest.UserRestServiceImpl" />
-    <bean id="userRestService2" class="cn.ebatech.imixpark.query.rest.UserRestService2Impl" />
-    
-    <bean id="commodityService" class="cn.ebatech.imixpark.query.service.CommodityServiceImpl"/>
+	<bean id="userService" class="cn.ebatech.imixpark.query.service.UserServiceImpl"/>
+    <bean id="activityService" class="cn.ebatech.imixpark.query.service.ActivityServiceImpl"/>
+    <bean id="categoryService" class="cn.ebatech.imixpark.query.service.CategoryServiceImpl"/>
+    <bean id="storeService" class="cn.ebatech.imixpark.query.service.StoreServiceImpl"/>
     <bean id="mallService" class="cn.ebatech.imixpark.query.service.MallServiceImpl"/>
-    <bean id="merchantService" class="cn.ebatech.imixpark.query.service.MerchantServiceImpl"/>
     <bean id="shopService" class="cn.ebatech.imixpark.query.service.ShopServiceImpl"/>
+    <bean id="carouselService" class="cn.ebatech.imixpark.query.service.CarouselServiceImpl"/>
+    <bean id="pushSettingService" class="cn.ebatech.imixpark.query.service.PushSettingServiceImpl"/>
+    <bean id="growthService" class="cn.ebatech.imixpark.query.service.GrowthServiceImpl"/>
     
-    <bean id="commodityRestService" class="cn.ebatech.imixpark.query.rest.CommodityRestServiceImpl"/>
+    <bean id="indexRestService" class="cn.ebatech.imixpark.query.rest.IndexRestServiceImpl"/>
+    <bean id="userRestService" class="cn.ebatech.imixpark.query.rest.UserRestServiceImpl"/>
+    <bean id="activityRestService" class="cn.ebatech.imixpark.query.rest.ActivityRestServiceImpl"/>
+    <bean id="categoryRestService" class="cn.ebatech.imixpark.query.rest.CategoryRestServiceImpl"/>
+    <bean id="storeRestService" class="cn.ebatech.imixpark.query.rest.StoreRestServiceImpl"/>
     <bean id="mallRestService" class="cn.ebatech.imixpark.query.rest.MallRestServiceImpl"/>
-    <bean id="merchantRestService" class="cn.ebatech.imixpark.query.rest.MerchantRestServiceImpl"/>
     <bean id="shopRestService" class="cn.ebatech.imixpark.query.rest.ShopRestServiceImpl"/>
+    <bean id="carouselRestService" class="cn.ebatech.imixpark.query.rest.CarouselRestServiceImpl"/>
+    <bean id="pushSettingRestService" class="cn.ebatech.imixpark.query.rest.PushSettingRestServiceImpl"/>
+    <bean id="growthRestService" class="cn.ebatech.imixpark.query.rest.GrowthRestServiceImpl"/>
 </beans>

@@ -1,14 +1,26 @@
 package cn.ebatech.imixpark.common.model.user;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  * 用户
  * @author tanyougen
  *
  */
-public class User {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+public class User implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 735458327923454657L;
 	/**
 	 * 会员id
 	 */
@@ -28,7 +40,7 @@ public class User {
 	/**
 	 * 身份证号码
 	 */
-	private String Idcard_no;
+	private String card_no;
 	/**
 	 * 性别
 	 */
@@ -72,7 +84,7 @@ public class User {
 	/**
 	 * '会员卡号'
 	 */
-	private int Cardno;
+	private String Cardno;
 	/**
 	 * 星座
 	 */
@@ -88,17 +100,23 @@ public class User {
 	/**
 	 * 会员卡
 	 */
-	private VIPCard card;
+	private VIPCard vipCard;
 	/**
 	 * 消费记录
 	 */
-	private List<Consumption> cps;
+	private List<Consumption> cps=new ArrayList<Consumption>();
 	/**
 	 * 积分
 	 * @return
 	 */
 	private List<Integral> Integrals;
 	
+	public String getCard_no() {
+		return card_no;
+	}
+	public void setCard_no(String card_no) {
+		this.card_no = card_no;
+	}
 	public List<Integral> getIntegrals() {
 		return Integrals;
 	}
@@ -134,12 +152,6 @@ public class User {
 	}
 	public void setAlias(String alias) {
 		Alias = alias;
-	}
-	public String getIdcard_no() {
-		return Idcard_no;
-	}
-	public void setIdcard_no(String idcard_no) {
-		Idcard_no = idcard_no;
 	}
 	public String getSex() {
 		return Sex;
@@ -201,12 +213,6 @@ public class User {
 	public void setLast_Login_Time(Date last_Login_Time) {
 		Last_Login_Time = last_Login_Time;
 	}
-	public int getCardno() {
-		return Cardno;
-	}
-	public void setCardno(int cardno) {
-		Cardno = cardno;
-	}
 	public String getConstellation() {
 		return Constellation;
 	}
@@ -225,11 +231,65 @@ public class User {
 	public void setSum_Integral(int sum_Integral) {
 		Sum_Integral = sum_Integral;
 	}
-	public VIPCard getCard() {
-		return card;
+
+	public VIPCard getVipCard() {
+		return vipCard;
 	}
-	public void setCard(VIPCard card) {
-		this.card = card;
+	public void setVipCard(VIPCard vipCard) {
+		this.vipCard = vipCard;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public String getCardno() {
+		return Cardno;
+	}
+	public void setCardno(String cardno) {
+		Cardno = cardno;
+	}
+	
+	public User(){}
+	public User(int id, int mall_id, String name, String alias, String card_no,
+			String sex, String tel, Date create_Time, String birthday,
+			int growth_Value, String regedit_Address, String type, String pwd,
+			String picture, Date last_Login_Time, String cardno,
+			String constellation, String level, int sum_Integral, VIPCard card,
+			List<Consumption> cps, List<Integral> integrals) {
+		this.id = id;
+		Mall_id = mall_id;
+		Name = name;
+		Alias = alias;
+		this.card_no = card_no;
+		Sex = sex;
+		Tel = tel;
+		Create_Time = create_Time;
+		Birthday = birthday;
+		Growth_Value = growth_Value;
+		Regedit_Address = regedit_Address;
+		Type = type;
+		Pwd = pwd;
+		Picture = picture;
+		Last_Login_Time = last_Login_Time;
+		Cardno = cardno;
+		Constellation = constellation;
+		Level = level;
+		Sum_Integral = sum_Integral;
+		this.vipCard = card;
+		this.cps = cps;
+		Integrals = integrals;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", Mall_id=" + Mall_id + ", Name=" + Name
+				+ ", Alias=" + Alias + ", card_no=" + card_no + ", Sex=" + Sex
+				+ ", Tel=" + Tel + ", Create_Time=" + Create_Time
+				+ ", Birthday=" + Birthday + ", Growth_Value=" + Growth_Value
+				+ ", Regedit_Address=" + Regedit_Address + ", Type=" + Type
+				+ ", Pwd=" + Pwd + ", Picture=" + Picture
+				+ ", Last_Login_Time=" + Last_Login_Time + ", Cardno=" + Cardno
+				+ ", Constellation=" + Constellation + ", Level=" + Level
+				+ ", Sum_Integral=" + Sum_Integral + ", card=" + vipCard
+				+ ", cps=" + cps + ", Integrals=" + Integrals + "]";
 	}
 	
 	

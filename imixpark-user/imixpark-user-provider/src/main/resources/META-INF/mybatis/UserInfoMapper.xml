@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+
+<mapper namespace="cn.ebatech.imixpark.user.dao.UserInfoDao">
+
+
+
+	<resultMap type="cn.ebatech.imixpark.common.model.user.User"
+		id="UserMap">
+		<id property="id" column="USER_ID" />
+		<result property="Mall_id" column="MALL_ID" />
+		<result property="Name" column="USER_NAME" />
+		<result property="Alias" column="USER_ALIAS" />
+		<result property="card_no" column="USER_CARD_NO" />
+		<result property="Sex" column="USER_SEX" />
+		<result property="Tel" column="USER_TEL" />
+		<result property="Create_Time" column="USER_CREATE_TIME" />
+		<result property="Birthday" column="USER_BIRTHDAY" />
+		<result property="Growth_Value" column="USER_GROWTH_VALUE" />
+		<result property="Regedit_Address" column="USER_REGEDIT_ADDRESS" />
+		<result property="Type" column="USER_TYPE" />
+		<result property="Pwd" column="USER_PWD" />
+		<result property="Picture" column="USER_PICTURE" />
+		<result property="Last_Login_Time" column="USER_LAST_LOGIN_TIME" />
+		<result property="Cardno" column="USER_CARDNO" />
+		<result property="Constellation" column="USER_CONSTELLATION" />
+		<result property="Level" column="USER_LEVEL" />
+		<result property="Sum_Integral" column="USER_SUM_INTEGRAL" />
+		<result property="Validate_Number" column="USER_VALIDATE_NUMBER" />
+		<result property="VN_Createtime" column="USER_VN_CREATETIME" />
+	</resultMap>
+	<select id="getUser" parameterType="int" resultMap="UserMap">
+		SELECT *
+		FROM user_info  where USER_ID=#{id}
+	</select>
+
+	<!-- 查询用户,演示: 1.输入用map传入多个参数 2.<where>语句, 智能添加where和and关键字 3.输出直接映射对象 -->
+	
+	<select id="userLogin" parameterType="map" resultType="cn.ebatech.imixpark.common.model.user.User">
+		select *
+		from user_info
+		<where>
+			<if test="user_name != null">
+				user_name=#{user_name}
+			</if>
+			<if test="user_pwd != null">
+				and user_pwd=#{user_pwd}
+			</if>
+		</where>
+	</select>
+	<!-- cn.ebatech.imixpark.common.model.user.User -->
+	<select id="validateTel" parameterType="String" resultMap="UserMap">
+		select *
+		from user_info
+		where user_tel=#{user_tel}
+	</select>
+	<insert id="registerUsers" useGeneratedKeys="false" keyProperty="id">
+		insert into user_info 
+		(mall_id,user_name,user_alias,user_idcard_no,user_sex,user_tel,
+		user_create_time,user_birthday,user_regedit_adderss,user_type,user_pwd,user_pictrue,
+		user_last_login_time,user_cardno,user_constellation)
+		values(#{mall_id},#{user_name},#{user_alias},#{user_idcard_no},#{user_sex},#{user_tel},
+		#{user_create_time},#{user_birthday},#{user_regedit_address},#{user_type},#{user_pwd},
+		#{user_picture},#{user_last_login_time},#{user_cardno},#{user_constellation})
+	</insert>
+	<insert id="registerUser" useGeneratedKeys="true" keyProperty="id">
+		insert into user_info (user_tel,user_pwd,user_validate_number)
+		values(#{user_tel},#{user_pwd},#{user_validate_number})
+	</insert>
+	<update id="updateUserInfo" parameterType="int">
+		update user_info 
+		set user_alias=user_tel
+		where user_id=#{user_id}
+	</update>
+	<insert id="insertValidateNum" useGeneratedKeys="true" keyProperty="id">
+		insert into send_validate
+		(phone_number,validate_number,vn_createtime)
+		values(#{phone_number},#{validate_number},#{vn_createtime})
+	</insert>
+
+</mapper> 

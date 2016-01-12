@@ -57,18 +57,24 @@
     <dubbo:protocol name="hessian" port="8890"/>
     <dubbo:protocol name="webservice" port="8892"/>
 
-
-    <dubbo:service interface="cn.ebatech.imixpark.query.service.UserService" ref="userService"  protocol="dubbo" group="xmlConfig"/>
-	<dubbo:service interface="cn.ebatech.imixpark.query.rest.UserRestService" ref="userRestService"  protocol="rest" validation="true"/>
-	<dubbo:service interface="cn.ebatech.imixpark.query.rest.UserRestService2" ref="userRestService2"  protocol="rest"  timeout="2000" connections="100" validation="true"/>
-
-	<dubbo:service interface="cn.ebatech.imixpark.query.service.CommodityService" ref="commodityService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.service.UserService" ref="userService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.service.ActivityService" ref="activityService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.service.CategoryService" ref="categoryService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.service.StoreService" ref="storeService"  protocol="dubbo" group="xmlConfig"/>
 	<dubbo:service interface="cn.ebatech.imixpark.query.service.MallService" ref="mallService"  protocol="dubbo" group="xmlConfig"/>
-	<dubbo:service interface="cn.ebatech.imixpark.query.service.MerchantService" ref="merchantService"  protocol="dubbo" group="xmlConfig"/>
 	<dubbo:service interface="cn.ebatech.imixpark.query.service.ShopService" ref="shopService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.service.CarouselService" ref="carouselService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.service.PushSettingService" ref="pushSettingService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.service.GrowthService" ref="growthService"  protocol="dubbo" group="xmlConfig"/>
 	
-	<dubbo:service interface="cn.ebatech.imixpark.query.rest.CommodityRestService" ref="commodityRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.IndexRestService" ref="indexRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.UserRestService" ref="userRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.ActivityRestService" ref="activityRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.CategoryRestService" ref="categoryRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.StoreRestService" ref="storeRestService"  protocol="rest" validation="true"/>
 	<dubbo:service interface="cn.ebatech.imixpark.query.rest.MallRestService" ref="mallRestService"  protocol="rest" validation="true"/>
-	<dubbo:service interface="cn.ebatech.imixpark.query.rest.MerchantRestService" ref="merchantRestService"  protocol="rest" validation="true"/>
 	<dubbo:service interface="cn.ebatech.imixpark.query.rest.ShopRestService" ref="shopRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.CarouselRestService" ref="carouselRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.PushSettingRestService" ref="pushSettingRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.query.rest.GrowthRestService" ref="growthRestService"  protocol="rest" validation="true"/>
 </beans>

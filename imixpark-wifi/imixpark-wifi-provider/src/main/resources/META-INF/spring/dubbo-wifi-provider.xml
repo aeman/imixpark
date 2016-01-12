@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ - Copyright 1999-2011 Alibaba Group.
+ -  
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -  
+ -      http://www.apache.org/licenses/LICENSE-2.0
+ -  
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--<import resource="classpath:/META-INF/spring/applicationContext.xml"/>-->
+
+<!--    <dubbo:application name="demo-provider" owner="programmer" organization="dubbox" logger="slf4j"/>   -->
+   <dubbo:application name="wifi-provider" owner="programmer" organization="dubbox" logger="slf4j"/>  
+
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <!--uncomment this if you want to test dubbo's monitor-->
+    <!--<dubbo:monitor protocol="registry"/>-->
+
+    <!-- here we demonstrate both annotation-based and xml-based configs -->
+<!--     <dubbo:annotation package="cn.ebatech.imixpark.demo.rest" /> -->
+      <dubbo:annotation package="cn.ebatech.imixpark.wifi.rest" />
+
+    <dubbo:protocol name="dubbo" serialization="kryo" optimizer="cn.ebatech.imixpark.wifi.SerializationOptimizerImpl"/>
+    <!--<dubbo:protocol userName="dubbo" serialization="fst" optimizer="SerializationOptimizerImpl"/>-->
+
+    <!--<dubbo:protocol userName="dubbo" serialization="nativejava"/>-->
+    <!--<dubbo:protocol userName="dubbo" serialization="hessian2"/>-->
+    <!--<dubbo:protocol userName="dubbo" serialization="fastjson"/>-->
+    <!--<dubbo:protocol userName="dubbo" serialization="dubbo"/>-->
+
+
+    <!--TODO according to the spring convention, we should use something like keep-alive-->
+    <!-- use netty server -->
+    <!--<dubbo:protocol userName="rest" port="8888" keepalive="true" server="netty" iothreads="5" threads="100" contextpath="services"/>-->
+
+    <!-- use tjws server -->
+    <!--<dubbo:protocol userName="rest" port="8888" server="tjws" contextpath="services"/>-->
+
+    <!-- use tomcat server -->
+    <dubbo:protocol name="rest" port="8888" threads="500" contextpath="services" server="tomcat" accepts="500" />
+
+    <!-- use the external tomcat or other server with the servlet approach; the port and contextpath must be exactly the same as those in external server -->
+    <!--<dubbo:protocol userName="rest" port="8888" contextpath="services" server="servlet"/>-->
+
+    <dubbo:protocol name="http" port="8889"/>
+    <dubbo:protocol name="hessian" port="8890"/>
+    <dubbo:protocol name="webservice" port="8892"/>
+
+
+    <dubbo:service interface="cn.ebatech.imixpark.wifi.service.UserService" ref="userService"  protocol="dubbo" group="xmlConfig"/>
+
+    <dubbo:service interface="cn.ebatech.imixpark.wifi.service.SuggestionService" ref="suggestionService"  protocol="dubbo" group="xmlConfig"/>
+    <dubbo:service interface="cn.ebatech.imixpark.wifi.service.User_InfoService" ref="user_InfoService"  protocol="dubbo" group="xmlConfig"/>
+    <dubbo:service interface="cn.ebatech.imixpark.wifi.service.RbisService" ref="rbisService"  protocol="dubbo" group="xmlConfig"/>
+    
+    
+	<dubbo:service interface="cn.ebatech.imixpark.wifi.rest.UserRestService" ref="userRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.wifi.rest.UserRestService2" ref="userRestService2"  protocol="rest"  timeout="2000" connections="100" validation="true"/>
+	
+	<dubbo:service interface="cn.ebatech.imixpark.wifi.rest.SuggestionRestService" ref="suggestionRestService"  protocol="rest" validation="true"/>
+	<dubbo:service interface="cn.ebatech.imixpark.wifi.rest.RbisRestService" ref="rbisRestService"  protocol="rest" validation="true"/>
+
+</beans>

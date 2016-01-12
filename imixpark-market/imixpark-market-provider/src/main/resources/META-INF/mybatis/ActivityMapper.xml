@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.ebatech.imixpark.market.dao.ActivityMyBatisDao">
+	<insert id="saveOrUpdate" useGeneratedKeys="false" keyProperty="activity_id">
+		insert into activity_detail 
+		(activity_id,user_id,activity_tel,activity_user,activity_status,activity_date)
+		values 
+		(#{activity_id},#{user_id},#{activity_tel},#{activity_user},#{activity_status},#{activity_date})
+	</insert>
+	<update id ="updateyet" parameterType="map">
+		update activity_detail 
+		set activity_status=#{activity_status}
+		where activity_id=#{activity_id} and user_id=#{user_id}
+	</update>
+</mapper> 

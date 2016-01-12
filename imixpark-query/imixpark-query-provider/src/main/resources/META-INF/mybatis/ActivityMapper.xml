@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ebatech.imixpark.query.dao.ActivityMybatisDao">
+
+	<select id="getActivity" parameterType="long" resultType="Activity">
+		select * from activity
+		where activity_id = #{id}
+	</select>
+
+	<select id="search" parameterType="map" resultType="Activity">
+		select * from activity
+		where 1=1
+		<if test="mall_id != null">
+			and mall_id = #{mall_id}
+		</if>
+		<if test="sort != null and sort !='' and dir != null and dir != ''">
+			order by ${sort} ${dir}
+		</if>
+		<if test="page != null and size != null">
+		 	limit #{page},#{size}
+		</if>
+	</select>
+	<!-- 查询活动报名人数 -->
+	<select id="count" parameterType="Long" resultType="int">
+		select count(*) 
+		from activity_detail
+		where activity_id = #{act_id}
+	</select>
+	<!-- 已参加活动报名list -->
+	<select id="getYetActivity" parameterType="Long" resultType="java.util.HashMap">
+		select activity.*,activity_detail.*
+		from activity,activity_detail
+		where activity.activity_id=activity_detail.activity_id and 
+		activity_detail.activity_status=0 and activity_detail.user_id = #{user_id}
+	</select>
+	<!-- 用户的后动接订单信息 -->
+	<select id="getActivityIndent" parameterType="Long" resultType="ActivityDetail">
+		select activity.*,activity_detail.*
+		from activity,activity_detail
+		where activity.activity_id=activity_detail.activity_id and 
+		activity_detail.id = #{act_detail_id}
+	</select>
+
+</mapper> 

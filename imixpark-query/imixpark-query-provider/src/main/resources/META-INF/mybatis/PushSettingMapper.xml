@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ebatech.imixpark.query.dao.PushSettingMybatisDao">
+
+	<!-- 根据ID查询实体 -->
+	<select id="getPushSetting" parameterType="long" resultType="PushSetting">
+		select * from push_setting
+		where push_id = #{id}
+	</select>
+	
+	<!-- 根据条件查询 -->
+	<select id="search" parameterType="map" resultType="PushSetting">
+		select * from push_setting
+		where 1=1
+		<if test="user_id != null">
+			and user_id = #{user_id}
+		</if>
+		<if test="sort != null and sort !='' and dir != null and dir != ''">
+			order by ${sort} ${dir}
+		</if>
+		<if test="page != null and size != null">
+		 	limit #{page},#{size}
+		</if>
+	</select>
+	
+	<!-- 插入消息推送设置信息 -->
+	<insert id="savePushSetting" useGeneratedKeys="true" keyProperty="push_id">
+		insert into push_setting (user_id, activity_open_flag, system_open_flag)
+		values (#{user_id}, #{activity_open_flag}, #{system_open_flag})
+	</insert>
+
+	<!-- 更新消息推送设置信息 -->
+	<update id="updatePushSetting" parameterType="map">
+		update push_setting set activity_open_flag = #{activity_open_flag}, system_open_flag = #{system_open_flag}
+		where user_id = #{user_id}
+	</update>
+
+</mapper> 

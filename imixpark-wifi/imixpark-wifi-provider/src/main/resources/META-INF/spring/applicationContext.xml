@@ -19,13 +19,15 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-        <property name="typeAliasesPackage" value="cn.ebatech.imixpark.demo.model"/>
+<!--          <property name="typeAliasesPackage" value="cn.ebatech.imixpark.wifi.model"/>  -->
+          <property name="typeAliasesPackage" value=" cn.ebatech.imixpark.common.model"/> 
         <!-- 显式指定Mapper文件位置 -->
         <property name="mapperLocations" value="classpath:/META-INF/mybatis/*Mapper.xml"/>
     </bean>
     <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.ebatech.imixpark.demo.dao"/>
+<!--         <property name="basePackage" value="cn.ebatech.imixpark.demo.dao"/> -->
+        <property name="basePackage" value="cn.ebatech.imixpark.wifi.dao"/>
         <property name="annotationClass" value="cn.ebatech.imixpark.common.dao.MyBatisRepository"/>
     </bean>
 
@@ -67,6 +69,15 @@
     </bean>
 
     <bean id="userService" class="cn.ebatech.imixpark.wifi.service.UserServiceImpl" />
+    <bean id="suggestionService" class="cn.ebatech.imixpark.wifi.service.SuggestionServiceImpl" />
+    <bean id="user_InfoService" class="cn.ebatech.imixpark.wifi.service.User_InfoServiceImpl" />
+      <bean id="rbisService" class="cn.ebatech.imixpark.wifi.service.RbisServiceImpl" />
+    
+    
     <bean id="userRestService" class="cn.ebatech.imixpark.wifi.rest.UserRestServiceImpl" />
     <bean id="userRestService2" class="cn.ebatech.imixpark.wifi.rest.UserRestService2Impl" />
+    
+    <bean id="suggestionRestService" class="cn.ebatech.imixpark.wifi.rest.SuggestionRestServiceImpl" />
+    <bean id="user_InfoRestService" class="cn.ebatech.imixpark.wifi.rest.User_InfoRestServiceImpl" />
+    <bean id="rbisRestService" class="cn.ebatech.imixpark.wifi.rest.RbisRestServiceImpl" />
 </beans>

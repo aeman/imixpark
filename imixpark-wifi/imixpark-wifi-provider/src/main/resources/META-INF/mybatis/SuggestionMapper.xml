@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="cn.ebatech.imixpark.wifi.dao.SuggestionDao">
+	
+
+	<!--添加用户意见-->
+	<insert id="save" parameterType="map" >
+		insert into suggestion ( SUGGESTION_CONTEXT, SUGGESTION_TEL,CreatDate)
+		values (#{Context}, #{Tel},#{CreatDate,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<!-- 更新用户密码 -->
+	<update id="editUserPwd" parameterType="map">
+		update user_info set USER_PWD = #{newpwd}
+		where USER_ID = #{userId}
+	</update>
+	
+	<!-- 查询用户密码 -->
+	<select id="getPwd" parameterType="int" resultType="String">
+		select  USER_PWD
+		from user_info
+		where USER_ID = #{userId}
+	</select>
+	
+
+	
+</mapper> 

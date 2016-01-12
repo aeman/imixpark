@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService {
     User getUser(Long id);
 
-    List<User> getAllUser();
+    List<User> getAllUser(String jwt);
 
     User findUserByLoginName(String loginName);
 
@@ -22,4 +22,8 @@ public interface UserService {
     List<User> searchUser(String loginName, String name);
 
     void uploadFile(MultipartFormDataInput input);
+
+    String login(String name, String passwrod);
+
+    void logout(String token);
 }

@@ -2,22 +2,22 @@ package cn.ebatech.imixpark.demo.rest;
 
 import cn.ebatech.imixpark.demo.model.User;
 import cn.ebatech.imixpark.demo.service.UserService;
+import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Map;
 
 
 //@Service(protocol = {"rest", "dubbo"}, group = "annotationConfig", validation = "true")
-//@Path("anusers")
-//@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
-//@Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
+@Path("anusers")
+@Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+@Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
 public class AnUserRestServiceImpl implements UserRestService {
 
     private static final Logger logger = LoggerFactory.getLogger(AnUserRestServiceImpl.class);
@@ -37,10 +37,15 @@ public class AnUserRestServiceImpl implements UserRestService {
         return userService.registerUser(user);
     }
 
+    @Override
+    public List<User> getAllUser(String jwt) {
+        return null;
+    }
+
     @GET
     @Path("all")
     public List<User> getAllUser() {
-        return userService.getAllUser();
+        return userService.getAllUser("");
     }
 
     @POST
@@ -49,5 +54,20 @@ public class AnUserRestServiceImpl implements UserRestService {
         String loginName = String.valueOf(params.get("login_name"));
         String name = String.valueOf(params.get("user_name"));
         return userService.searchUser(loginName, name);
+    }
+
+    @Override
+    public void uploadFile(MultipartFormDataInput input) {
+        userService.uploadFile(input);
+    }
+
+    @Override
+    public Map<String, String> login(String name, String password) {
+        return null;
+    }
+
+    @Override
+    public void logout(String token) {
+
     }
 }

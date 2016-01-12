@@ -1,10 +1,14 @@
 package cn.ebatech.imixpark.user.dao;
 
-import cn.ebatech.imixpark.user.model.User;
 import cn.ebatech.imixpark.common.dao.MyBatisRepository;
+import cn.ebatech.imixpark.common.model.user.BaShop;
+import cn.ebatech.imixpark.common.model.user.User;
 
 import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.annotation.sql.DataSourceDefinition;
 
 
 /**
@@ -14,8 +18,6 @@ import java.util.Map;
 @MyBatisRepository
 public interface UserDao {
 
-	User get(Long id);
-
 	List<User> getAll();
 
     User getUserByLoginName(String loginName);
@@ -23,8 +25,20 @@ public interface UserDao {
 	List<User> search(Map<String, Object> parameters);
 
 	void save(User user);
+	User getUser(int id);
 
 	void update(User user);
 
 	void delete(Long id);
+
+	void test();
+
+	int updateUser(User user);
+
+	void addBaShops(List<BaShop> bs);
+	
+	String getPwd(int userId);
+	
+	int editUserPwd (Map<String, Object> parameters);
+	
 }

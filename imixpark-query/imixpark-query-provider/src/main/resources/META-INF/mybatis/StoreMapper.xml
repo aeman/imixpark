@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ebatech.imixpark.query.dao.StoreMybatisDao">
+
+	<select id="Store" parameterType="long" resultType="Store">
+		select * from store
+		where store_id = #{id}
+	</select>
+
+	<select id="search" parameterType="map" resultType="Store">
+		select ss.* from store ss
+		left join shop_store_relation ssr on ss.store_id = ssr.store_id
+		left join shop sh on sh.shop_id = ssr.shop_id
+		where 1=1
+		<if test="mall_id != null">
+			and ss.mall_id = #{mall_id}
+		</if>
+		<if test="floor_number != null and floor_number != 0">
+			and sh.floor_number = #{floor_number}
+		</if>
+		<if test="category_code != null and category_code != ''">
+			and ss.category_code = #{category_code}
+		</if>
+		<if test="store_name != null and store_name != ''">
+			<bind name="pattern" value="'%' + store_name + '%'" />
+			and ss.store_name like #{pattern}
+		</if>
+		<if test="sort != null and sort !='' and dir != null and dir != ''">
+			order by ss.${sort} ${dir}
+		</if>
+		<if test="page != null and size != null">
+		 	limit #{page},#{size}
+		</if>
+	</select>
+
+</mapper> 

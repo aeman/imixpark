@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.ebatech.imixpark.common.model.market.Shop;
 import cn.ebatech.imixpark.query.dao.ShopMybatisDao;
-import cn.ebatech.imixpark.query.model.Shop;
 
 @Component
 @Transactional
@@ -29,5 +29,10 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public List<Shop> search(Map<String, Object> parameters) {
 		return shopDao.search(parameters);
+	}
+
+	@Override
+	public List<Shop> searchByPara(String shop_name, Long id) {
+		return shopDao.searchByPara(shop_name, id);
 	}
 }

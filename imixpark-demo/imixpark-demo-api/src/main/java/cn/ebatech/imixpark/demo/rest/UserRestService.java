@@ -23,9 +23,13 @@ public interface UserRestService {
 
     Long registerUser(User user);
 
-    List<User> getAllUser();
+    List<User> getAllUser(String jwt);
 
     List<User> searchUser(Map<String, Object> params);
 
     void uploadFile(MultipartFormDataInput input);
+
+    Map<String, String> login(String name, String password);
+
+    void logout(String token);
 }

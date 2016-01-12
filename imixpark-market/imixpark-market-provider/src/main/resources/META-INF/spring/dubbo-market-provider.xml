@@ -30,9 +30,9 @@
     <!--<dubbo:monitor protocol="registry"/>-->
 
     <!-- here we demonstrate both annotation-based and xml-based configs -->
-    <dubbo:annotation package="cn.ebatech.imixpark.demo.rest" />
+    <dubbo:annotation package="cn.ebatech.imixpark.market.rest" />
 
-    <dubbo:protocol name="dubbo" serialization="kryo" optimizer="cn.ebatech.imixpark.demo.SerializationOptimizerImpl"/>
+    <dubbo:protocol name="dubbo" serialization="kryo" optimizer="cn.ebatech.imixpark.market.SerializationOptimizerImpl"/>
     <!--<dubbo:protocol userName="dubbo" serialization="fst" optimizer="cn.ebatech.imixpark.demo.SerializationOptimizerImpl"/>-->
 
     <!--<dubbo:protocol userName="dubbo" serialization="nativejava"/>-->
@@ -58,9 +58,10 @@
     <dubbo:protocol name="hessian" port="8890"/>
     <dubbo:protocol name="webservice" port="8892"/>
 
+<!-- 
 
-    <dubbo:service interface="cn.ebatech.imixpark.demo.service.UserService" ref="userService"  protocol="dubbo" group="xmlConfig"/>
-	<dubbo:service interface="cn.ebatech.imixpark.demo.rest.UserRestService" ref="userRestService"  protocol="rest" validation="true"/>
-	<dubbo:service interface="cn.ebatech.imixpark.demo.rest.UserRestService2" ref="userRestService2"  protocol="rest"  timeout="2000" connections="100" validation="true"/>
-
+	<dubbo:service interface="cn.ebatech.imixpark.market.rest.CouponsRestService2" ref="couponsRestService2"  protocol="rest"  timeout="2000" connections="100" validation="true"/>
+-->
+    <dubbo:service interface="cn.ebatech.imixpark.market.service.ActivityService" ref="activityService"  protocol="dubbo" group="xmlConfig"/>
+	<dubbo:service interface="cn.ebatech.imixpark.market.rest.ActivityRestService" ref="activityRestService"  protocol="rest" validation="true"/>
 </beans>

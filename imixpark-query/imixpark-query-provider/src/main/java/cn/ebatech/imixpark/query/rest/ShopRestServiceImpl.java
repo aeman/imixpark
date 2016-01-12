@@ -1,9 +1,10 @@
 package cn.ebatech.imixpark.query.rest;
 
-import java.util.List;
 import java.util.Map;
 
-import cn.ebatech.imixpark.query.model.Shop;
+import cn.ebatech.imixpark.common.model.market.Shop;
+import cn.ebatech.imixpark.common.util.CommonUtil;
+import cn.ebatech.imixpark.common.util.Constant;
 import cn.ebatech.imixpark.query.service.ShopService;
 
 import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
@@ -26,14 +27,25 @@ public class ShopRestServiceImpl implements ShopRestService {
     @GET
     @Path("{id : \\d+}")
 	@Override
-	public Shop getShop(Long id) {
-		return shopService.getShop(id);
+	public Map<String, Object> getShop(@PathParam("id") Long id) {
+		return CommonUtil.returnObjectMap(Constant.CODE_SUCCESS, Constant.MESSAGE_SUCCCESS, 
+				Shop.class.getSimpleName(), shopService.getShop(id));
+	}
+
+    @POST
+    @Path("search")
+	@Override
+	public Map<String, Object> search(Map<String, Object> parameters) {
+    	return CommonUtil.returnObjectMap(Constant.CODE_SUCCESS, Constant.MESSAGE_SUCCCESS,
+    			Shop.class.getSimpleName(), shopService.search(parameters));
 	}
 
     @GET
-    @Path("search")
+    @Path("/searchByPara/{shop_name}/{id}")
 	@Override
-	public List<Shop> search(Map<String, Object> parameters) {
-		return shopService.search(parameters);
+	public Map<String, Object> searchByPara(@PathParam("shop_name") String shop_name, @PathParam("id") Long id) {
+		return CommonUtil.returnObjectMap(Constant.CODE_SUCCESS, Constant.MESSAGE_SUCCCESS, 
+				Shop.class.getSimpleName(), searchByPara(shop_name, id));
 	}
+    
 }

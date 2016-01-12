@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+
+<mapper namespace="cn.ebatech.imixpark.user.fj_dao.fj_UserDao">
+
+<resultMap type="cn.ebatech.imixpark.common.model.user.LogIntegral"
+		id="LogIntegrals">
+		<id property="cdlmkt" column="CDLMKT" />
+		<id property="cdlcno" column="CDLCNO" />
+		<id property="cdlxfje" column="CDLXFJE" />
+		<id property="cdltrace" column="CDLTRACE" />
+		<id property="cdlcurjffs" column="CDLCURJFFS" />
+		<id property="cdlhisjffs" column="CDLHISJFFS" />
+		<id property="cdltotjfye" column="CDLTOTJFYE" />
+		<id property="cdlcurxfje" column="CDLCURXFJE" />
+		<id property="cdlvaliddate" column="CDLVALIDDATE" />
+		<!-- 订单 -->
+	</resultMap>
+	
+	<select id="findLogIntegrals" parameterType="string" resultMap="LogIntegrals">
+		select * from CARDJFLOG where CDLCNO=#{cdlcno}
+	</select>
+	
+
+	<!-- 删除用户 -->
+	<select id="test" resultType="int">
+		select COUNT(*) FROM DIF_ASSINFO
+	</select>
+	
+</mapper> 

@@ -318,6 +318,13 @@
             <scope>runtime</scope>
         </dependency>
         <!-- PERSISTENCE end -->
+
+        <!-- jwt -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.6.0</version>
+        </dependency>
     </dependencies>
 
     <!-- 需要打 war 包，下面注释掉 -->

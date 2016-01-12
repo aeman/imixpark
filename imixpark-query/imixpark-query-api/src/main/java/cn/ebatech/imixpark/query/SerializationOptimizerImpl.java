@@ -15,31 +15,29 @@
  */
 package cn.ebatech.imixpark.query;
 
-import cn.ebatech.imixpark.query.model.Commodity;
-import cn.ebatech.imixpark.query.model.Mall;
-import cn.ebatech.imixpark.query.model.Merchant;
-import cn.ebatech.imixpark.query.model.Shop;
-import cn.ebatech.imixpark.query.model.User;
+import cn.ebatech.imixpark.common.model.market.Activity;
+import cn.ebatech.imixpark.common.model.market.Category;
+import cn.ebatech.imixpark.common.model.market.Mall;
+import cn.ebatech.imixpark.common.model.market.Store;
+import cn.ebatech.imixpark.common.model.market.Shop;
+import cn.ebatech.imixpark.common.model.user.PushSetting;
+
 import com.alibaba.dubbo.common.serialize.support.SerializationOptimizer;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * This class must be accessible from both the provider and consumer
- *
- * @author lishen
- */
 public class SerializationOptimizerImpl implements SerializationOptimizer {
 
     public Collection<Class> getSerializableClasses() {
         List<Class> classes = new LinkedList<Class>();
-        classes.add(User.class);
-        classes.add(Commodity.class);
         classes.add(Mall.class);
-        classes.add(Merchant.class);
         classes.add(Shop.class);
+        classes.add(Activity.class);
+        classes.add(Category.class);
+        classes.add(Store.class);
+        classes.add(PushSetting.class);
         return classes;
     }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+
+<mapper namespace="cn.ebatech.imixpark.user.quartz_dao.Quartz_UserDao">
+
+	<resultMap type="cn.ebatech.imixpark.common.model.user.BaShop"
+		id="BaShop">
+		<id property="id" column="id" jdbcType="VARCHAR"/>
+		<id property="spjm" column="spjm" jdbcType="VARCHAR"/>
+		<id property="spname" column="spname" jdbcType="VARCHAR"/>
+		<id property="spename" column="spename" jdbcType="VARCHAR" />
+		<id property="status" column="status" jdbcType="VARCHAR"/>
+		<id property="isvalid" column="isvalid" jdbcType="VARCHAR" />
+		<id property="str" column="str" jdbcType="VARCHAR" />
+		<id property="floor" column="floor" jdbcType="VARCHAR" />
+		<id property="regional" column="regional" jdbcType="VARCHAR" />
+		<id property="location" column="location" jdbcType="VARCHAR" />
+		<id property="shape" column="shape" jdbcType="VARCHAR" />
+		<id property="length" column="length" jdbcType="VARCHAR" />
+		<id property="easy" column="easy" jdbcType="VARCHAR" />
+		<id property="spxz" column="spxz" jdbcType="VARCHAR" />
+		<id property="zqjh" column="zqjh"  jdbcType="VARCHAR"/>
+		<id property="hygh" column="hygh" jdbcType="VARCHAR" />
+		<id property="ytgh" column="ytgh" jdbcType="VARCHAR"  />
+		<id property="zlgh" column="zlgh"  jdbcType="VARCHAR"/>
+		<id property="kind" column="kind" />
+		<id property="jzarea" column="jzarea" />
+		<id property="syarea" column="syarea" />
+		<id property="zjarea" column="zjarea" />
+		<id property="arealx" column="arealx" jdbcType="VARCHAR"/>
+		<id property="rentdw" column="rentdw" jdbcType="VARCHAR"/>
+		<id property="rentts" column="rentts" />
+		<id property="exprent" column="exprent" />
+		<id property="expsj" column="expsj" />
+		<id property="currencies" column="currencies" jdbcType="VARCHAR" />
+		<id property="powerk" column="powerk" />
+		<id property="powersl" column="powersl" />
+		<id property="cablessize1" column="cablessize1" />
+		<id property="cablespcs1" column="cablespcs1" jdbcType="VARCHAR" />
+		<id property="cablessize2" column="cablessize2" jdbcType="VARCHAR"/>
+		<id property="cablespcs2" column="cablespcs2" />
+		<id property="cablessize3" column="cablessize3" jdbcType="VARCHAR"/>
+		<id property="cablespcs3" column="cablespcs3" />
+		<id property="waterflg" column="waterflg" jdbcType="VARCHAR"/>
+		<id property="watermemo" column="watermemo" jdbcType="VARCHAR"/>
+		<id property="watersl" column="watersl" />
+		<id property="watersize" column="watersize" jdbcType="VARCHAR" />
+		<id property="fcutype" column="fcutype" jdbcType="VARCHAR" />
+		<id property="fcusl" column="fcusl" />
+		<id property="fcurt" column="fcurt" />
+		<id property="airtype" column="airtype" jdbcType="VARCHAR"/>
+		<id property="airsl" column="airsl" />
+		<id property="airrt" column="airrt" />
+		<id property="centertype" column="centertype" jdbcType="VARCHAR"/>
+		<id property="centersl" column="centersl" />
+		<id property="centerrt" column="centerrt" />
+		<id property="supplywh" column="supplywh" jdbcType="VARCHAR"/>
+		<id property="returnwh" column="returnwh" jdbcType="VARCHAR"/>
+		<id property="kitflg" column="kitflg" jdbcType="VARCHAR"/>
+		<id property="kitwh" column="kitwh" jdbcType="VARCHAR"/>
+		<id property="kitmemo" column="kitmemo" jdbcType="VARCHAR"/>
+		<id property="firesl1" column="firesl1" />
+		<id property="firesl2" column="firesl2" />
+		<id property="firesl3" column="firesl3" />
+		<id property="smokesl" column="smokesl" />
+		<id property="trapflg" column="trapflg" jdbcType="VARCHAR"/>
+		<id property="linesl1" column="linesl1" />
+		<id property="linesl2" column="linesl2" />
+		<id property="possl" column="possl" />
+		<id property="is_xssy" column="is_xssy" jdbcType="VARCHAR"/>
+		<id property="hth" column="hth" jdbcType="VARCHAR"/>
+		<id property="memo" column="memo" jdbcType="VARCHAR"/>
+		<id property="oprid" column="oprid" jdbcType="VARCHAR"/>
+		<id property="adtid" column="adtid" jdbcType="VARCHAR"/>
+		<id property="postid" column="postid" jdbcType="VARCHAR"/>
+		<id property="last_modified" column="last_modified" />
+		<id property="ssld" column="ssld" jdbcType="VARCHAR"/>
+		<id property="last_billid" column="last_billid" jdbcType="VARCHAR"/>
+		<id property="last_billno" column="last_billno" jdbcType="VARCHAR"/>
+		<id property="last_operid" column="last_operid" jdbcType="VARCHAR" />
+		<id property="oprDate" column="oprDate" />
+		<id property="adtDate" column="adtDate" />
+		<id property="source" column="source" jdbcType="VARCHAR"/>
+		<id property="ismark" column="ismark" jdbcType="VARCHAR"/>
+		<!-- 订单 -->
+	</resultMap>
+
+	<select id="findAll" resultMap="BaShop">
+				SELECT * FROM ( SELECT A.*, ROWNUM RN 
+FROM (SELECT * FROM ba_shop) A ) WHERE RN BETWEEN 21 AND 40
+	</select>
+
+</mapper> 

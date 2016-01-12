@@ -13,16 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.ebatech.imixpark.demo.consumer;
+package cn.ebatech.imixpark.market.consumer;
 
-
-import cn.ebatech.imixpark.demo.model.User;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -40,7 +36,7 @@ public class RestClient {
 //                public void run() {
 //                    System.out.println("Starting thread " + index + "...");
 //                    for (int j = 0; j < 500; j++) {
-        registerUser("http://localhost:" + port + "/services/users/register.json", MediaType.APPLICATION_JSON_TYPE);
+//        registerUser("http://localhost:" + port + "/services/users/register.json", MediaType.APPLICATION_JSON_TYPE);
 
 //        registerUser("http://127.0.0.1:" + port + "/services/users/register.xml", MediaType.TEXT_XML_TYPE);
 
@@ -69,23 +65,23 @@ public class RestClient {
 //        }
     }
 
-    private static void registerUser(String url, MediaType mediaType) {
-        System.out.println("Registering user via " + url);
-        User user = new User(1L, "larrypage");
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(url);
-        Response response = target.request().post(Entity.entity(user, mediaType));
-
-        try {
-            if (response.getStatus() != 200) {
-                throw new RuntimeException("Failed with HTTP error code : " + response.getStatus());
-            }
-            System.out.println("Successfully got result: " + response.readEntity(String.class));
-        } finally {
-            response.close();
-            client.close();
-        }
-    }
+//    private static void registerUser(String url, MediaType mediaType) {
+//        System.out.println("Registering user via " + url);
+//        User user = new User(1L, "larrypage");
+//        Client client = ClientBuilder.newClient();
+//        WebTarget target = client.target(url);
+//        Response response = target.request().post(Entity.entity(user, mediaType));
+//
+//        try {
+//            if (response.getStatus() != 200) {
+//                throw new RuntimeException("Failed with HTTP error code : " + response.getStatus());
+//            }
+//            System.out.println("Successfully got result: " + response.readEntity(String.class));
+//        } finally {
+//            response.close();
+//            client.close();
+//        }
+//    }
 
     private static void getUser(String url) {
         System.out.println("Getting user via " + url);

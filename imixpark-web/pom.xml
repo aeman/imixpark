@@ -39,12 +39,12 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>opensymphony</groupId>
-            <artifactId>sitemesh</artifactId>
-            <version>${sitemesh.version}</version>
-            <scope>runtime</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>opensymphony</groupId>-->
+            <!--<artifactId>sitemesh</artifactId>-->
+            <!--<version>${sitemesh.version}</version>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -58,19 +58,6 @@
             <scope>provided</scope>
         </dependency>
         <!-- WEB end -->
-
-        <!-- SECURITY begin -->
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring</artifactId>
-            <version>${shiro.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-ehcache</artifactId>
-            <version>${shiro.version}</version>
-        </dependency>
-        <!-- SECURITY end -->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -110,6 +97,10 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxb-provider</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
         </dependency>
 
         <!-- zookeeper 注册需要的 jar -->
@@ -198,7 +189,7 @@
                     <contextPath>/</contextPath>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>8088</port>
+                            <port>8080</port>
                         </connector>
                     </connectors>
                 </configuration>

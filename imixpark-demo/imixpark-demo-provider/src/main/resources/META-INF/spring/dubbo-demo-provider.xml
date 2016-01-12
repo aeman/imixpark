@@ -22,7 +22,7 @@
 
     <!--<import resource="classpath:/META-INF/spring/applicationContext.xml"/>-->
 
-    <dubbo:application name="demo-provider" owner="programmer" organization="dubbox" logger="slf4j"/>
+    <dubbo:application name="demo-provider" owner="chenxuan" organization="dubbox" logger="slf4j"/>
 
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
@@ -33,34 +33,34 @@
     <dubbo:annotation package="cn.ebatech.imixpark.demo.rest" />
 
     <dubbo:protocol name="dubbo" serialization="kryo" optimizer="cn.ebatech.imixpark.demo.SerializationOptimizerImpl"/>
-    <!--<dubbo:protocol userName="dubbo" serialization="fst" optimizer="cn.ebatech.imixpark.demo.SerializationOptimizerImpl"/>-->
+    <!--<dubbo:protocol name="dubbo" serialization="fst" optimizer="cn.ebatech.imixpark.demo.SerializationOptimizerImpl"/>-->
 
-    <!--<dubbo:protocol userName="dubbo" serialization="nativejava"/>-->
-    <!--<dubbo:protocol userName="dubbo" serialization="hessian2"/>-->
-    <!--<dubbo:protocol userName="dubbo" serialization="fastjson"/>-->
-    <!--<dubbo:protocol userName="dubbo" serialization="dubbo"/>-->
+    <!--<dubbo:protocol name="dubbo" serialization="nativejava"/>-->
+    <!--<dubbo:protocol name="dubbo" serialization="hessian2"/>-->
+    <!--<dubbo:protocol name="dubbo" serialization="fastjson"/>-->
+    <!--<dubbo:protocol name="dubbo" serialization="dubbo"/>-->
 
 
     <!--TODO according to the spring convention, we should use something like keep-alive-->
     <!-- use netty server -->
-    <!--<dubbo:protocol userName="rest" port="8888" keepalive="true" server="netty" iothreads="5" threads="100" contextpath="services"/>-->
+    <!--<dubbo:protocol name="rest" port="8888" keepalive="true" server="netty" iothreads="5" threads="100" contextpath="services"/>-->
 
     <!-- use tjws server -->
-    <!--<dubbo:protocol userName="rest" port="8888" server="tjws" contextpath="services"/>-->
+    <!--<dubbo:protocol name="rest" port="8888" server="tjws" contextpath="services"/>-->
 
     <!-- use tomcat server -->
-    <dubbo:protocol name="rest" port="8888" threads="500" contextpath="services" server="tomcat" accepts="500" />
+    <dubbo:protocol name="rest" port="8199" threads="500" contextpath="services" server="tomcat" accepts="500" />
 
     <!-- use the external tomcat or other server with the servlet approach; the port and contextpath must be exactly the same as those in external server -->
-    <!--<dubbo:protocol userName="rest" port="8888" contextpath="services" server="servlet"/>-->
+    <!--<dubbo:protocol name="rest" port="8888" contextpath="services" server="servlet"/>-->
 
-    <dubbo:protocol name="http" port="8889"/>
-    <dubbo:protocol name="hessian" port="8890"/>
-    <dubbo:protocol name="webservice" port="8892"/>
+    <!--<dubbo:protocol name="http" port="8889"/>-->
+    <!--<dubbo:protocol name="hessian" port="8890"/>-->
+    <!--<dubbo:protocol name="webservice" port="8892"/>-->
 
 
     <dubbo:service interface="cn.ebatech.imixpark.demo.service.UserService" ref="userService"  protocol="dubbo" group="xmlConfig"/>
 	<dubbo:service interface="cn.ebatech.imixpark.demo.rest.UserRestService" ref="userRestService"  protocol="rest" validation="true"/>
-	<dubbo:service interface="cn.ebatech.imixpark.demo.rest.UserRestService2" ref="userRestService2"  protocol="rest"  timeout="2000" connections="100" validation="true"/>
+	<!--<dubbo:service interface="cn.ebatech.imixpark.demo.rest.UserRestService2" ref="userRestService2"  protocol="rest"  timeout="2000" connections="100" validation="true"/>-->
 
 </beans>

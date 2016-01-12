@@ -3,25 +3,13 @@ package cn.ebatech.imixpark.query.service;
 import java.util.List;
 import java.util.Map;
 
-import cn.ebatech.imixpark.query.model.Mall;
+import cn.ebatech.imixpark.common.model.market.Mall;
 
-/**
- * 商场接口
- * @author dell
- */
 public interface MallService {
 	
-	/**
-	 * 根据商场ID查询商场实体
-	 * @param id
-	 * @return
-	 */
     Mall getMall(Long id);
+    
+    List<Mall> getMallByCoordinate(Double x_c, Double y_c);
 
-    /**
-     * 查询所有商场信息
-     * @param parameters
-     * @return
-     */
     List<Mall> search(Map<String, Object> parameters);
 }

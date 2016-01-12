@@ -1,5 +1,7 @@
 package cn.ebatech.imixpark.common.model.user;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -10,181 +12,188 @@ import java.util.Date;
  */
 public class VIPCard {
 	/**
-	 * 所属用户
+	 * 会员账号	Varchar2(20)
+卡号	Varchar2(20)
+姓名	VARCHAR2(100)
+卡类型	Varchar2(4)
+卡类型名称	VARCHAR2(60)
+是否有积分账户	number
+是否可以会员折扣	number
+当前有效积分	number
+有效期	date
+电话	Varchar(30)
+身份证号	Varchar(20)
+性别	Char(1) M:男  F:女
+邮箱	Varchar(100)
+生日	date
+地址	Varchar(200)
+维护门店	Varchar(20)
 	 */
-	private User user;
+	/****************富基******************/
+	private String account;
+	private String number;
+	private String name;
+	private String type;
+	private String typeName;
+	private int isHaveIntegral;
+	private int isDiscount;
+	private double Integral;
+	private Date periodOfValidity;
+	private Date birthday;
+	private String phoneNo;
+	private String IDnumber;
+	private String sex;
+	private String email;
+	private String address;
+	private String store;
+	/***************富基 end*******************/
+	//成长值区间
+	private String valueSection;
+	
 	/**
 	 * 会员等级
 	 */
-	private String Card_Level;
-	/**
-	 * 会员成长值最小值
-	 */
-	private int Level_Min_Value;
-	/**
-	 * 会员成长值最大值
-	 */
-	private int Level_Max_Value;
-	/**
-	 * 状态
-	 */
-	private String Card_State;
-	/**
-	 * 备注
-	 */
-	private String Card_Remark;
-
-	/*******************************************************/
-
-	private int Card_Id;// 会员账号 唯一id
-	private String Typectcode;// 卡类型
-	private String Ctjfrate;// 是否有积分账户
-	private String Ctname;// 卡类型名称
-	private String Ctzkl;// 是否可以会员折扣
-	private String Ccusrjfye;// 当前有效积分
-	private String Cmmoobile2;// 电话2
-	private String Cmmoobile1;// 电话1
-	private String Cmtel;// 电话
-	private String Cmidno;// 卡号
-	private String Cmsex;// 性别
-	private String Cmemail;// 邮箱
-	private Date Cmbirthday;// 生日
-	private String Cdmmkt;// 维护门店
-	private String Cmaddr;// 地址
-	private Date Cdmmaxdate;
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public String getCard_Level() {
-		return Card_Level;
-	}
-	public void setCard_Level(String card_Level) {
-		Card_Level = card_Level;
-	}
-	public int getLevel_Min_Value() {
-		return Level_Min_Value;
-	}
-	public void setLevel_Min_Value(int level_Min_Value) {
-		Level_Min_Value = level_Min_Value;
-	}
-	public int getLevel_Max_Value() {
-		return Level_Max_Value;
-	}
-	public void setLevel_Max_Value(int level_Max_Value) {
-		Level_Max_Value = level_Max_Value;
-	}
-	public String getCard_State() {
-		return Card_State;
-	}
-	public void setCard_State(String card_State) {
-		Card_State = card_State;
-	}
-	public String getCard_Remark() {
-		return Card_Remark;
-	}
-	public void setCard_Remark(String card_Remark) {
-		Card_Remark = card_Remark;
-	}
-	public int getCard_Id() {
-		return Card_Id;
-	}
-	public void setCard_Id(int card_Id) {
-		Card_Id = card_Id;
-	}
-	public String getTypectcode() {
-		return Typectcode;
-	}
-	public void setTypectcode(String typectcode) {
-		Typectcode = typectcode;
-	}
-	public String getCtjfrate() {
-		return Ctjfrate;
-	}
-	public void setCtjfrate(String ctjfrate) {
-		Ctjfrate = ctjfrate;
-	}
-	public String getCtname() {
-		return Ctname;
-	}
-	public void setCtname(String ctname) {
-		Ctname = ctname;
-	}
-	public String getCtzkl() {
-		return Ctzkl;
-	}
-	public void setCtzkl(String ctzkl) {
-		Ctzkl = ctzkl;
-	}
-	public String getCcusrjfye() {
-		return Ccusrjfye;
-	}
-	public void setCcusrjfye(String ccusrjfye) {
-		Ccusrjfye = ccusrjfye;
-	}
-	public String getCmmoobile2() {
-		return Cmmoobile2;
-	}
-	public void setCmmoobile2(String cmmoobile2) {
-		Cmmoobile2 = cmmoobile2;
-	}
-	public String getCmmoobile1() {
-		return Cmmoobile1;
-	}
-	public void setCmmoobile1(String cmmoobile1) {
-		Cmmoobile1 = cmmoobile1;
-	}
-	public String getCmtel() {
-		return Cmtel;
-	}
-	public void setCmtel(String cmtel) {
-		Cmtel = cmtel;
-	}
-	public String getCmidno() {
-		return Cmidno;
-	}
-	public void setCmidno(String cmidno) {
-		Cmidno = cmidno;
-	}
-	public String getCmsex() {
-		return Cmsex;
-	}
-	public void setCmsex(String cmsex) {
-		Cmsex = cmsex;
-	}
-	public String getCmemail() {
-		return Cmemail;
-	}
-	public void setCmemail(String cmemail) {
-		Cmemail = cmemail;
-	}
-	public Date getCmbirthday() {
-		return Cmbirthday;
-	}
-	public void setCmbirthday(Date cmbirthday) {
-		Cmbirthday = cmbirthday;
-	}
-	public String getCdmmkt() {
-		return Cdmmkt;
-	}
-	public void setCdmmkt(String cdmmkt) {
-		Cdmmkt = cdmmkt;
-	}
-	public String getCmaddr() {
-		return Cmaddr;
-	}
-	public void setCmaddr(String cmaddr) {
-		Cmaddr = cmaddr;
-	}
-	public Date getCdmmaxdate() {
-		return Cdmmaxdate;
-	}
-	public void setCdmmaxdate(Date cdmmaxdate) {
-		Cdmmaxdate = cdmmaxdate;
-	}
-
+	private String vipGrade;
+	 
+	private int userID;
 	
-
+	public VIPCard(String[] msArray) throws ParseException {
+		 
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			this.account=msArray[2];
+			this.number=msArray[3];
+			this.name=msArray[4];
+			this.type=msArray[5];
+			this.typeName=msArray[6];
+			this.isHaveIntegral=Integer.valueOf(msArray[7]);
+			this.isDiscount=Integer.valueOf(msArray[8]);
+			this.Integral=Double.valueOf(msArray[9]);
+			this.periodOfValidity=sdf.parse(msArray[10]);
+			this.phoneNo=msArray[11];
+			this.IDnumber=msArray[12];
+			this.sex=msArray[13];
+			this.email=msArray[14];
+			this.birthday=sdf.parse(msArray[15]);
+			this.address=msArray[16];
+			this.store=msArray[17];
+		
+	}
+	public String getVipGrade() {
+		return vipGrade;
+	}
+	public void setVipGrade(String vipGrade) {
+		this.vipGrade = vipGrade;
+	}
+	public String getValueSection() {
+		return valueSection;
+	}
+	public void setValueSection(String valueSection) {
+		this.valueSection = valueSection;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	public int getIsHaveIntegral() {
+		return isHaveIntegral;
+	}
+	public void setIsHaveIntegral(int isHaveIntegral) {
+		this.isHaveIntegral = isHaveIntegral;
+	}
+	public int getIsDiscount() {
+		return isDiscount;
+	}
+	public void setIsDiscount(int isDiscount) {
+		this.isDiscount = isDiscount;
+	}
+	public double getIntegral() {
+		return Integral;
+	}
+	public void setIntegral(int integral) {
+		Integral = integral;
+	}
+	public Date getPeriodOfValidity() {
+		return periodOfValidity;
+	}
+	public void setPeriodOfValidity(Date periodOfValidity) {
+		this.periodOfValidity = periodOfValidity;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	public String getIDnumber() {
+		return IDnumber;
+	}
+	public void setIDnumber(String iDnumber) {
+		IDnumber = iDnumber;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getStore() {
+		return store;
+	}
+	public void setStore(String store) {
+		this.store = store;
+	}
+	
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+	public void setIntegral(double integral) {
+		Integral = integral;
+	}
 }

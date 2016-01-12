@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.ebatech.imixpark.demo.provider;
+package cn.ebatech.imixpark.market.provider;
 
 public class DemoProvider {
 

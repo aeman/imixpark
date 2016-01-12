@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ebatech.imixpark.query.dao.CategoryMybatisDao">
+
+	<select id="getCategory" parameterType="long" resultType="Category">
+		select * from category
+		where category_id = #{id}
+	</select>
+
+	<select id="search" parameterType="map" resultType="Category">
+		select distinct c.* from category c
+		left join mall_category mc on c.category_id = mc.category_id
+		where 1=1
+		<if test="higher_code == null or higher_code == ''">
+			and category_higher_code is null
+		</if>
+		<if test="mall_id != null">
+			and mall_id = #{mall_id}
+		</if>
+		<if test="sort != null and sort !='' and dir != null and dir != ''">
+			order by ${sort} ${dir}
+		</if>
+		<if test="page != null and size != null">
+		 	limit #{page},#{size}
+		</if>
+	</select>
+
+</mapper> 

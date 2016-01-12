@@ -5,14 +5,18 @@
 <mapper namespace="cn.ebatech.imixpark.query.dao.MallMybatisDao">
 
 	<select id="getMall" parameterType="long" resultType="Mall">
-		select id, mall_name, mall_address, mall_phone, legal_person
-		from ma_mall
-		where id=#{id}
+		select * from mall
+		where mall_id = #{id}
 	</select>
 
 	<select id="search" parameterType="map" resultType="Mall">
-		select id, mall_name, mall_address, mall_phone, legal_person
-		from ma_mall
+		select * from mall
+		<if test="sort != null and sort !='' and dir != null and dir != ''">
+			order by ${sort} ${dir}
+		</if>
+		<if test="page != null and size != null">
+		 	limit #{page},#{size}
+		</if>
 	</select>
 
 </mapper> 

@@ -19,14 +19,14 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-        <property name="typeAliasesPackage" value="cn.ebatech.imixpark.demo.model"/>
+        <property name="typeAliasesPackage" value="cn.ebatech.imixpark.common.model.*"/>
         <!-- 显式指定Mapper文件位置 -->
         <property name="mapperLocations" value="classpath:/META-INF/mybatis/*Mapper.xml"/>
     </bean>
     <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.ebatech.imixpark.demo.dao"/>
-        <property name="annotationClass" value="cn.ebatech.imixpark.common.dao.MyBatisRepository"/>
+        <property name="basePackage" value="cn.ebatech.imixpark.market.dao"/>
+        <property name="annotationClass" value="cn.ebatech.imixpark.market.dao.MyBatisRepository"/>
     </bean>
 
     <!-- 事务管理器配置, Jdbc单数据源事务 -->
@@ -65,8 +65,7 @@
         <property name="minEvictableIdleTimeMillis" value="600000"/>
         <property name="validationQuery" value="SELECT 1"/>
     </bean>
-
-    <bean id="userService" class="cn.ebatech.imixpark.demo.service.UserServiceImpl" />
-    <bean id="userRestService" class="cn.ebatech.imixpark.demo.rest.UserRestServiceImpl" />
-    <bean id="userRestService2" class="cn.ebatech.imixpark.demo.rest.UserRestService2Impl" />
+    
+     <bean id="activityService" class="cn.ebatech.imixpark.market.service.ActivityServiceImpl" />
+     <bean id="activityRestService" class="cn.ebatech.imixpark.market.rest.ActivityRestServiceImpl" />
 </beans>

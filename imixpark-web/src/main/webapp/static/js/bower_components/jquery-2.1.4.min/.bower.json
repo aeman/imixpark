@@ -1,0 +1,15 @@
+{
+  "name": "jquery-2.1.4.min",
+  "_cacheHeaders": {
+    "ETag": "\"553fb284-14979\"",
+    "Last-Modified": "Tue, 28 Apr 2015 16:17:08 GMT",
+    "Content-Length": "84345",
+    "Content-Type": "application/javascript; charset=utf-8"
+  },
+  "_release": "e-tag:553fb284-",
+  "main": "index.js",
+  "_source": "http://code.jquery.com/jquery-2.1.4.min.js",
+  "_target": "*",
+  "_originalSource": "http://code.jquery.com/jquery-2.1.4.min.js",
+  "_direct": true
+}

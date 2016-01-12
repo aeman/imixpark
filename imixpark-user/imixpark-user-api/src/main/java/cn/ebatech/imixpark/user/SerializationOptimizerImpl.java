@@ -1,6 +1,7 @@
 package cn.ebatech.imixpark.user;
 
-import cn.ebatech.imixpark.user.model.User;
+import cn.ebatech.imixpark.common.model.user.User;
+
 import com.alibaba.dubbo.common.serialize.support.SerializationOptimizer;
 
 import java.util.Collection;

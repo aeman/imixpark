@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ebatech.imixpark.query.dao.GrowthMybatisDao">
+
+	<select id="search" parameterType="map" resultType="Growth_Value">
+		select * from growth_value
+		where 1=1
+		<if test="user_id != null">
+			and user_id = #{user_id}
+		</if>
+		<if test="sort != null and sort !='' and dir != null and dir != ''">
+			order by ${sort} ${dir}
+		</if>
+		<if test="page != null and size != null">
+		 	limit #{page},#{size}
+		</if>
+	</select>
+
+</mapper> 
