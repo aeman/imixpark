@@ -10,15 +10,15 @@ function isType(type) {
   }
 }
 
-var isString = isType("String")
+var isString = isType("String");
 
-var doc = document
-var head = doc.head || doc.getElementsByTagName("head")[0] || doc.documentElement
-var baseElement = head.getElementsByTagName("base")[0]
+var doc = document;
+var head = doc.head || doc.getElementsByTagName("head")[0] || doc.documentElement;
+var baseElement = head.getElementsByTagName("base")[0];
 
-var IS_CSS_RE = /\.css(?:\?|$)/i
-var currentlyAddingScript
-var interactiveScript
+var IS_CSS_RE = /\.css(?:\?|$)/i;
+var currentlyAddingScript;
+var interactiveScript;
 
 // `onload` event is not supported in WebKit < 535.23 and Firefox < 9.0
 // ref:
@@ -26,17 +26,17 @@ var interactiveScript
 //  - https://bugzilla.mozilla.org/show_bug.cgi?id=185236
 //  - https://developer.mozilla.org/en/HTML/Element/link#Stylesheet_load_events
 var isOldWebKit = +navigator.userAgent
-  .replace(/.*(?:AppleWebKit|AndroidWebKit)\/?(\d+).*/i, "$1") < 536
+  .replace(/.*(?:AppleWebKit|AndroidWebKit)\/?(\d+).*/i, "$1") < 536;
 
 function isFunction(obj) {
   return {}.toString.call(obj) == "[object Function]"
 }
 function request(url, callback, charset, crossorigin) {
-  var isCSS = IS_CSS_RE.test(url)
-  var node = doc.createElement(isCSS ? "link" : "script")
+  var isCSS = IS_CSS_RE.test(url);
+  var node = doc.createElement(isCSS ? "link" : "script");
 
   if (charset) {
-    var cs = isFunction(charset) ? charset(url) : charset
+    var cs = isFunction(charset) ? charset(url) : charset;
     if (cs) {
       node.charset = cs
     }
@@ -46,45 +46,45 @@ function request(url, callback, charset, crossorigin) {
     node.setAttribute("crossorigin", crossorigin)
   }
 
-  addOnload(node, callback, isCSS, url)
+  addOnload(node, callback, isCSS, url);
 
   if (isCSS) {
-    node.rel = "stylesheet"
+    node.rel = "stylesheet";
     node.href = url
   }
   else {
-    node.async = true
+    node.async = true;
     node.src = url
   }
 
   // For some cache cases in IE 6-8, the script executes IMMEDIATELY after
   // the end of the insert execution, so use `currentlyAddingScript` to
   // hold current node, for deriving url in `define` call
-  currentlyAddingScript = node
+  currentlyAddingScript = node;
 
   // ref: #185 & http://dev.jquery.com/ticket/2709
   baseElement ?
     head.insertBefore(node, baseElement) :
-    head.appendChild(node)
+    head.appendChild(node);
 
   currentlyAddingScript = null
 }
 
 function addOnload(node, callback, isCSS, url) {
-  var supportOnload = "onload" in node
+  var supportOnload = "onload" in node;
 
   // for Old WebKit and Old Firefox
   if (isCSS && (isOldWebKit || !supportOnload)) {
     setTimeout(function() {
       pollCss(node, callback)
-    }, 1) // Begin after node insertion
+    }, 1); // Begin after node insertion
     return
   }
 
   if (supportOnload) {
-    node.onload = onload
+    node.onload = onload;
     node.onerror = function() {
-      seajs.emit("error", { uri: url, node: node })
+      seajs.emit("error", { uri: url, node: node });
       onload()
     }
   }
@@ -98,7 +98,7 @@ function addOnload(node, callback, isCSS, url) {
 
   function onload() {
     // Ensure only run once and handle memory leak in IE
-    node.onload = node.onerror = node.onreadystatechange = null
+    node.onload = node.onerror = node.onreadystatechange = null;
 
     // Remove the script to reduce memory leak
     if (!isCSS && !seajs.data.debug) {
@@ -106,15 +106,15 @@ function addOnload(node, callback, isCSS, url) {
     }
 
     // Dereference the node
-    node = null
+    node = null;
 
     callback()
   }
 }
 
 function pollCss(node, callback) {
-  var sheet = node.sheet
-  var isLoaded
+  var sheet = node.sheet;
+  var isLoaded;
 
   // for WebKit < 536
   if (isOldWebKit) {
@@ -151,20 +151,20 @@ function pollCss(node, callback) {
 
 
 // For Developers
-seajs.request = request
+seajs.request = request;
 
 
 
 /**
  * util-path.js - The utilities for operating path such as id, uri
  */
-var data = seajs.data
+var data = seajs.data;
 
-var DIRNAME_RE = /[^?#]*\//
+var DIRNAME_RE = /[^?#]*\//;
 
-var DOT_RE = /\/\.\//g
-var DOUBLE_DOT_RE = /\/[^/]+\/\.\.\//
-var MULTI_SLASH_RE = /([^:/])\/+\//g
+var DOT_RE = /\/\.\//g;
+var DOUBLE_DOT_RE = /\/[^/]+\/\.\.\//;
+var MULTI_SLASH_RE = /([^:/])\/+\//g;
 
 // Extract the directory portion of a path
 // dirname("a/b/c.js?t=123#xx/zz") ==> "a/b/"
@@ -177,7 +177,7 @@ function dirname(path) {
 // realpath("http://test.com/a//./b/../c") ==> "http://test.com/a/c"
 function realpath(path) {
   // /a/b/./c/./d ==> /a/b/c/d
-  path = path.replace(DOT_RE, "/")
+  path = path.replace(DOT_RE, "/");
 
   /*
    @author wh1100717
@@ -185,7 +185,7 @@ function realpath(path) {
    a///b/////c ==> a/b/c
    DOUBLE_DOT_RE matches a/b/c//../d path correctly only if replace // with / first
    */
-  path = path.replace(MULTI_SLASH_RE, "$1/")
+  path = path.replace(MULTI_SLASH_RE, "$1/");
 
   // a/b/c/../../d  ==>  a/b/../d  ==>  a/d
   while (path.match(DOUBLE_DOT_RE)) {
@@ -199,8 +199,8 @@ function realpath(path) {
 // normalize("path/to/a") ==> "path/to/a.js"
 // NOTICE: substring is faster than negative slice and RegExp
 function normalize(path) {
-  var last = path.length - 1
-  var lastC = path.charAt(last)
+  var last = path.length - 1;
+  var lastC = path.charAt(last);
 
   // If the uri ends with `#`, just return it without '#'
   if (lastC === "#") {
@@ -214,17 +214,17 @@ function normalize(path) {
 }
 
 
-var PATHS_RE = /^([^/:]+)(\/.+)$/
-var VARS_RE = /{([^{]+)}/g
+var PATHS_RE = /^([^/:]+)(\/.+)$/;
+var VARS_RE = /{([^{]+)}/g;
 
 function parseAlias(id) {
-  var alias = data.alias
+  var alias = data.alias;
   return alias && isString(alias[id]) ? alias[id] : id
 }
 
 function parsePaths(id) {
-  var paths = data.paths
-  var m
+  var paths = data.paths;
+  var m;
 
   if (paths && (m = id.match(PATHS_RE)) && isString(paths[m[1]])) {
     id = paths[m[1]] + m[2]
@@ -234,7 +234,7 @@ function parsePaths(id) {
 }
 
 function parseVars(id) {
-  var vars = data.vars
+  var vars = data.vars;
 
   if (vars && id.indexOf("{") > -1) {
     id = id.replace(VARS_RE, function(m, key) {
@@ -246,16 +246,16 @@ function parseVars(id) {
 }
 
 function parseMap(uri) {
-  var map = data.map
-  var ret = uri
+  var map = data.map;
+  var ret = uri;
 
   if (map) {
     for (var i = 0, len = map.length; i < len; i++) {
-      var rule = map[i]
+      var rule = map[i];
 
       ret = isFunction(rule) ?
         (rule(uri) || uri) :
-        uri.replace(rule[0], rule[1])
+        uri.replace(rule[0], rule[1]);
 
       // Only apply the first matched rule
       if (ret !== uri) break
@@ -266,12 +266,12 @@ function parseMap(uri) {
 }
 
 
-var ABSOLUTE_RE = /^\/\/.|:\//
-var ROOT_DIR_RE = /^.*?\/\/.*?\//
+var ABSOLUTE_RE = /^\/\/.|:\//;
+var ROOT_DIR_RE = /^.*?\/\/.*?\//;
 
 function addBase(id, refUri) {
-  var ret
-  var first = id.charAt(0)
+  var ret;
+  var first = id.charAt(0);
 
   // Absolute
   if (ABSOLUTE_RE.test(id)) {
@@ -283,7 +283,7 @@ function addBase(id, refUri) {
   }
   // Root
   else if (first === "/") {
-    var m = data.cwd.match(ROOT_DIR_RE)
+    var m = data.cwd.match(ROOT_DIR_RE);
     ret = m ? m[0] + id.substring(1) : id
   }
   // Top-level
@@ -300,30 +300,30 @@ function addBase(id, refUri) {
 }
 
 function id2Uri(id, refUri) {
-  if (!id) return ""
+  if (!id) return "";
 
-  id = parseAlias(id)
-  id = parsePaths(id)
-  id = parseVars(id)
-  id = normalize(id)
+  id = parseAlias(id);
+  id = parsePaths(id);
+  id = parseVars(id);
+  id = normalize(id);
 
-  var uri = addBase(id, refUri)
-  uri = parseMap(uri)
+  var uri = addBase(id, refUri);
+  uri = parseMap(uri);
 
   return uri
 }
 
 
-var doc = document
-var cwd = (!location.href || location.href.indexOf('about:') === 0) ? '' : dirname(location.href)
-var scripts = doc.scripts
+var doc = document;
+var cwd = (!location.href || location.href.indexOf('about:') === 0) ? '' : dirname(location.href);
+var scripts = doc.scripts;
 
 // Recommend to add `seajsnode` id for the `sea.js` script element
 var loaderScript = doc.getElementById("seajsnode") ||
-  scripts[scripts.length - 1]
+  scripts[scripts.length - 1];
 
 // When `sea.js` is inline, set loaderDir to current working directory
-var loaderDir = dirname(getScriptAbsoluteSrc(loaderScript) || cwd)
+var loaderDir = dirname(getScriptAbsoluteSrc(loaderScript) || cwd);
 
 function getScriptAbsoluteSrc(node) {
   return node.hasAttribute ? // non-IE6/7
@@ -334,7 +334,7 @@ function getScriptAbsoluteSrc(node) {
 
 
 // For Developers
-seajs.resolve = id2Uri
+seajs.resolve = id2Uri;
 
 
 define("seajs/seajs-css/1.0.5/seajs-css-debug", [], {});

@@ -4,7 +4,7 @@ define(function(require, exports, module) {
   	var req2 = require.async("../js/default.js");//引入弹出
 	module.exports={
 		DRC_scrollBar:scrollBar
-	}
+	};
     var doc = $(document);
 	function scrollBar(){
         var myScroll;
@@ -31,7 +31,7 @@ define(function(require, exports, module) {
 		})//end	
 
 
-	}
+	};
 
 	//公共函数
 	function Event_touchend(th){
@@ -49,4 +49,4 @@ define(function(require, exports, module) {
 
 
 
-})
+});

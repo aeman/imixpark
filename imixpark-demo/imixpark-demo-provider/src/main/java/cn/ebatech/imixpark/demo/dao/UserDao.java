@@ -1,7 +1,7 @@
 package cn.ebatech.imixpark.demo.dao;
 
-import cn.ebatech.imixpark.demo.model.User;
 import cn.ebatech.imixpark.common.dao.MyBatisRepository;
+import cn.ebatech.imixpark.demo.model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,7 @@ import java.util.Map;
  * 方法名称必须与Mapper.xml中保持一致.
  */
 @MyBatisRepository
+//@CacheNamespace(implementation=MybatisRedisCache.class)
 public interface UserDao {
 
 	User get(Long id);

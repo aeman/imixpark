@@ -1,19 +1,17 @@
 package cn.ebatech.imixpark.user.rest;
 
-import java.util.Map;
+import cn.ebatech.imixpark.common.util.CommonUtil;
+import cn.ebatech.imixpark.user.service.SuggestionService;
+import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import cn.ebatech.imixpark.common.util.CommonUtil;
-import cn.ebatech.imixpark.user.service.SuggestionService;
-
-
-import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import java.util.Map;
 
 @Path("suggestion")
 @Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
@@ -88,5 +86,5 @@ public class SuggestionRestServiceImpl  implements SuggestionRestService {
 		}
 
 		return CommonUtil.returnObjectMap(code, message, "user", null);
-	};
+	}
 }

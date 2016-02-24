@@ -19,8 +19,8 @@ public class MyUtil {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("message", message);
 		return map;
-	};
-	
+	}
+
 	/**
 	 * 计算两个坐标之间的距离
 	 * @param lng1	坐标1经度

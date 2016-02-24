@@ -27,7 +27,7 @@ public interface UserRestService {
 
     List<User> searchUser(Map<String, Object> params);
 
-    void uploadFile(MultipartFormDataInput input);
+    String uploadFile(MultipartFormDataInput input);
 
     Map<String, String> login(String name, String password);
 

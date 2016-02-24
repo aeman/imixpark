@@ -7,10 +7,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+//@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class User implements Serializable {
 
     @NotNull
@@ -19,17 +21,23 @@ public class User implements Serializable {
 
     @NotNull
     @Size(min = 6, max = 50)
-    private String user_name;
+    private String user_name="";
 
     @NotNull
     @Size(min = 6, max = 50)
-    private String login_name;
+    private String login_name="";
 
     @NotNull
-    private String pass_word;
+    private String pass_word="";
 
     @NotNull
-    private String pass_salt;
+    private String pass_salt="";
+
+    private Integer test_int=0;
+
+    private Double test_double=0.0;
+
+    private Date test_date=new Date(0L);
 
     public User() {
     }
@@ -85,5 +93,29 @@ public class User implements Serializable {
 
     public void setPass_salt(String pass_salt) {
         this.pass_salt = pass_salt;
+    }
+
+    public Integer getTest_int() {
+        return test_int;
+    }
+
+    public void setTest_int(Integer test_int) {
+        this.test_int = test_int;
+    }
+
+    public Double getTest_double() {
+        return test_double;
+    }
+
+    public void setTest_double(Double test_double) {
+        this.test_double = test_double;
+    }
+
+    public Date getTest_date() {
+        return test_date;
+    }
+
+    public void setTest_date(Date test_date) {
+        this.test_date = test_date;
     }
 }

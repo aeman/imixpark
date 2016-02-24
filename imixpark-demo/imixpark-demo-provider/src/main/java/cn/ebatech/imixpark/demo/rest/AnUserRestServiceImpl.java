@@ -45,7 +45,7 @@ public class AnUserRestServiceImpl implements UserRestService {
     @GET
     @Path("all")
     public List<User> getAllUser() {
-        return userService.getAllUser("");
+        return userService.getAllUser();
     }
 
     @POST
@@ -57,8 +57,8 @@ public class AnUserRestServiceImpl implements UserRestService {
     }
 
     @Override
-    public void uploadFile(MultipartFormDataInput input) {
-        userService.uploadFile(input);
+    public String uploadFile(MultipartFormDataInput input) {
+        return userService.uploadFile(input);
     }
 
     @Override

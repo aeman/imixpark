@@ -17,16 +17,16 @@ public class CommonUtil {
 	 */
 	public static String[] putKey(String... key){
 		return key;
-	};
-	
+	}
+
 	/**
 	 * 返回多个数据体之前设置所有数据体value值（必须与putKey方法参数一一对应）
 	 * @param val   数据体所有value值
 	 */
 	public static Object[] putVal(Object... val){
 		return val;
-	};
-	
+	}
+
 	/**
 	 * 封装接口返回值（多个数据体）
 	 * @param code 返回值代码
@@ -46,8 +46,8 @@ public class CommonUtil {
 			}
 		}
 		return map;
-	};
-	
+	}
+
 	/**
 	 * 封装接口返回值（单个数据体）
 	 * @param code	返回值代码
@@ -63,8 +63,8 @@ public class CommonUtil {
 		if(key!=null && !key.equals(""))
 			map.put(key, object);
 		return map;
-	};
-	
+	}
+
 	/**
 	 * 计算两个坐标之间的距离
 	 * @param lng1	坐标1经度

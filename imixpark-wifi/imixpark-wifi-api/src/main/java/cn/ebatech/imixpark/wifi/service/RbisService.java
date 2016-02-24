@@ -6,9 +6,9 @@ import java.util.Map;
 
 public interface RbisService {
 	
-	public String offlineWithDecrypt(Map<String, Object> params);
+	String offlineWithDecrypt(Map<String, Object> params);
 	
-	public String userOnlineWithDecrypt(Map<String, Object> parameters);
+	String userOnlineWithDecrypt(Map<String, Object> parameters);
 	
 
 }

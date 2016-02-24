@@ -65,7 +65,7 @@
       			 +		'<div>'
 				 +	'</div>'
 			     + '</div>'
-		}
+		};
 		$.extend(_opt,opt);
 		if(_opt.url){
 			_opt.content = '<iframe allowtransparency="true"  src="' + _opt["url"] + '"  width="100%" style="height:100%" frameborder="no" ></iframe>'
@@ -125,7 +125,7 @@
 				//da["Close"]();//关闭回调
 			}
 		}
-	}
+	};
 	//弹出窗口
 	function Alert(arg,callback){
 		//console.log(this.constractor)
@@ -134,7 +134,7 @@
 				content:"没有需要提示的内容！",
 				cancelVal:false,
 				Close:$.noop
-		}
+		};
 		if(_.isObject(arg)){
 			_.extend(_opts,arg);
 		}else if(_.isString(arg)){
@@ -150,7 +150,7 @@
 				ok:$.noop,
 				cancel:$.noop
 				
-		}
+		};
 		if(_.isObject(content)){
 			_.extend(_opts,content);
 		}else if(_.isString(content)){
@@ -177,8 +177,8 @@
 			}());
 
 		})
-	})
+	});
 	
 //公共函数
 	
-}(jQuery,window)
+}(jQuery,window);

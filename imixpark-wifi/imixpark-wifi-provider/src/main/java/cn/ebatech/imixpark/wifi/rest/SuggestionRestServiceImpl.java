@@ -87,5 +87,5 @@ public class SuggestionRestServiceImpl  implements SuggestionRestService {
 		}
 
 		return CommonUtil.returnObjectMap(code, message, "user", null);
-	};
+	}
 }

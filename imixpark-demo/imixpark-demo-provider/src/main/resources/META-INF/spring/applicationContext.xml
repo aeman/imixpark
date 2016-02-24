@@ -66,6 +66,24 @@
         <property name="validationQuery" value="SELECT 1"/>
     </bean>
 
+    <!-- Jedis配置 -->
+    <bean id="jedisTemplate" class="org.springside.modules.nosql.redis.JedisTemplate">
+        <constructor-arg name="jedisPool" ref="jedisPool"/>
+    </bean>
+
+    <bean id="jedisPool" class="org.springside.modules.nosql.redis.pool.JedisDirectPool">
+        <constructor-arg name="config" ref="redisPoolConfig" />
+        <constructor-arg name="address" ref="hostAndPort" />
+    </bean>
+
+    <bean id="hostAndPort" class="redis.clients.jedis.HostAndPort">
+        <constructor-arg name="host" value="${redis.host}" />
+        <constructor-arg name="port" value="${redis.port}" />
+    </bean>
+
+    <bean id="redisPoolConfig" class="redis.clients.jedis.JedisPoolConfig" />
+
+    <!-- 暴露服务 -->
     <bean id="userService" class="cn.ebatech.imixpark.demo.service.UserServiceImpl" />
     <bean id="userRestService" class="cn.ebatech.imixpark.demo.rest.UserRestServiceImpl" />
     <bean id="userRestService2" class="cn.ebatech.imixpark.demo.rest.UserRestService2Impl" />

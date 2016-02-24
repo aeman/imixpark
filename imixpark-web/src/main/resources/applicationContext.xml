@@ -14,7 +14,7 @@
     <!--<import resource="applicationContext-dubbo.xml"/>-->
 
     <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
-    <context:component-scan base-package="cn.ebatech.imixpark">
+    <context:component-scan base-package="cn.ebatech.imixpark.web">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.web.bind.annotation.ControllerAdvice"/>

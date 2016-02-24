@@ -38,23 +38,23 @@ public interface NFrdifSoap {
     @WebMethod(action = "http://tempurl.org/processdata")
     @RequestWrapper(localName = "processdata", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.Processdata")
     @ResponseWrapper(localName = "processdataResponse", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.ProcessdataResponse")
-    public void processdata(
-        @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
-        String userid,
-        @WebParam(name = "password", targetNamespace = "http://tempurl.org")
-        String password,
-        @WebParam(name = "cmdid", targetNamespace = "http://tempurl.org")
-        String cmdid,
-        @WebParam(name = "inputpara", targetNamespace = "http://tempurl.org")
-        String inputpara,
-        @WebParam(name = "outputpara", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> outputpara,
-        @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<Integer> rtn,
-        @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> errormsg,
-        @WebParam(name = "processdataResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
-        Holder<Short> processdataResult);
+    void processdata(
+            @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
+            String userid,
+            @WebParam(name = "password", targetNamespace = "http://tempurl.org")
+            String password,
+            @WebParam(name = "cmdid", targetNamespace = "http://tempurl.org")
+            String cmdid,
+            @WebParam(name = "inputpara", targetNamespace = "http://tempurl.org")
+            String inputpara,
+            @WebParam(name = "outputpara", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> outputpara,
+            @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<Integer> rtn,
+            @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> errormsg,
+            @WebParam(name = "processdataResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
+            Holder<Short> processdataResult);
 
     /**
      * 
@@ -65,7 +65,7 @@ public interface NFrdifSoap {
     @WebResult(name = "testconnectResult", targetNamespace = "http://tempurl.org")
     @RequestWrapper(localName = "testconnect", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.Testconnect")
     @ResponseWrapper(localName = "testconnectResponse", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.TestconnectResponse")
-    public String testconnect();
+    String testconnect();
 
     /**
      * 
@@ -76,7 +76,7 @@ public interface NFrdifSoap {
     @WebResult(name = "getversionResult", targetNamespace = "http://tempurl.org")
     @RequestWrapper(localName = "getversion", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.Getversion")
     @ResponseWrapper(localName = "getversionResponse", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.GetversionResponse")
-    public String getversion();
+    String getversion();
 
     /**
      * 
@@ -89,17 +89,17 @@ public interface NFrdifSoap {
     @WebMethod(action = "http://tempurl.org/testconnectuser")
     @RequestWrapper(localName = "testconnectuser", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.Testconnectuser")
     @ResponseWrapper(localName = "testconnectuserResponse", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.TestconnectuserResponse")
-    public void testconnectuser(
-        @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
-        String userid,
-        @WebParam(name = "password", targetNamespace = "http://tempurl.org")
-        String password,
-        @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<Integer> rtn,
-        @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> errormsg,
-        @WebParam(name = "testconnectuserResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
-        Holder<Short> testconnectuserResult);
+    void testconnectuser(
+            @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
+            String userid,
+            @WebParam(name = "password", targetNamespace = "http://tempurl.org")
+            String password,
+            @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<Integer> rtn,
+            @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> errormsg,
+            @WebParam(name = "testconnectuserResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
+            Holder<Short> testconnectuserResult);
 
     /**
      * 
@@ -116,25 +116,25 @@ public interface NFrdifSoap {
     @WebMethod(action = "http://tempurl.org/getagentconfig")
     @RequestWrapper(localName = "getagentconfig", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.Getagentconfig")
     @ResponseWrapper(localName = "getagentconfigResponse", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.GetagentconfigResponse")
-    public void getagentconfig(
-        @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
-        String userid,
-        @WebParam(name = "password", targetNamespace = "http://tempurl.org")
-        String password,
-        @WebParam(name = "storeid", targetNamespace = "http://tempurl.org")
-        String storeid,
-        @WebParam(name = "agentid", targetNamespace = "http://tempurl.org")
-        String agentid,
-        @WebParam(name = "token", targetNamespace = "http://tempurl.org")
-        String token,
-        @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<Short> rtn,
-        @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> errormsg,
-        @WebParam(name = "configinfo", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> configinfo,
-        @WebParam(name = "getagentconfigResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
-        Holder<Short> getagentconfigResult);
+    void getagentconfig(
+            @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
+            String userid,
+            @WebParam(name = "password", targetNamespace = "http://tempurl.org")
+            String password,
+            @WebParam(name = "storeid", targetNamespace = "http://tempurl.org")
+            String storeid,
+            @WebParam(name = "agentid", targetNamespace = "http://tempurl.org")
+            String agentid,
+            @WebParam(name = "token", targetNamespace = "http://tempurl.org")
+            String token,
+            @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<Short> rtn,
+            @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> errormsg,
+            @WebParam(name = "configinfo", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> configinfo,
+            @WebParam(name = "getagentconfigResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
+            Holder<Short> getagentconfigResult);
 
     /**
      * 
@@ -151,25 +151,25 @@ public interface NFrdifSoap {
     @WebMethod(action = "http://tempurl.org/sendagentlog")
     @RequestWrapper(localName = "sendagentlog", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.Sendagentlog")
     @ResponseWrapper(localName = "sendagentlogResponse", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.SendagentlogResponse")
-    public void sendagentlog(
-        @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
-        String userid,
-        @WebParam(name = "password", targetNamespace = "http://tempurl.org")
-        String password,
-        @WebParam(name = "storeid", targetNamespace = "http://tempurl.org")
-        String storeid,
-        @WebParam(name = "agentid", targetNamespace = "http://tempurl.org")
-        String agentid,
-        @WebParam(name = "token", targetNamespace = "http://tempurl.org")
-        String token,
-        @WebParam(name = "loginfo", targetNamespace = "http://tempurl.org")
-        String loginfo,
-        @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<Short> rtn,
-        @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> errormsg,
-        @WebParam(name = "sendagentlogResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
-        Holder<Short> sendagentlogResult);
+    void sendagentlog(
+            @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
+            String userid,
+            @WebParam(name = "password", targetNamespace = "http://tempurl.org")
+            String password,
+            @WebParam(name = "storeid", targetNamespace = "http://tempurl.org")
+            String storeid,
+            @WebParam(name = "agentid", targetNamespace = "http://tempurl.org")
+            String agentid,
+            @WebParam(name = "token", targetNamespace = "http://tempurl.org")
+            String token,
+            @WebParam(name = "loginfo", targetNamespace = "http://tempurl.org")
+            String loginfo,
+            @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<Short> rtn,
+            @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> errormsg,
+            @WebParam(name = "sendagentlogResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
+            Holder<Short> sendagentlogResult);
 
     /**
      * 
@@ -186,24 +186,24 @@ public interface NFrdifSoap {
     @WebMethod(action = "http://tempurl.org/checkagent")
     @RequestWrapper(localName = "checkagent", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.Checkagent")
     @ResponseWrapper(localName = "checkagentResponse", targetNamespace = "http://tempurl.org", className = "com.hyan.client2.CheckagentResponse")
-    public void checkagent(
-        @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
-        String userid,
-        @WebParam(name = "password", targetNamespace = "http://tempurl.org")
-        String password,
-        @WebParam(name = "storeid", targetNamespace = "http://tempurl.org")
-        String storeid,
-        @WebParam(name = "agentid", targetNamespace = "http://tempurl.org")
-        String agentid,
-        @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<Short> rtn,
-        @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> errormsg,
-        @WebParam(name = "lastdate", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> lastdate,
-        @WebParam(name = "lasttoken", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
-        Holder<String> lasttoken,
-        @WebParam(name = "checkagentResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
-        Holder<Short> checkagentResult);
+    void checkagent(
+            @WebParam(name = "userid", targetNamespace = "http://tempurl.org")
+            String userid,
+            @WebParam(name = "password", targetNamespace = "http://tempurl.org")
+            String password,
+            @WebParam(name = "storeid", targetNamespace = "http://tempurl.org")
+            String storeid,
+            @WebParam(name = "agentid", targetNamespace = "http://tempurl.org")
+            String agentid,
+            @WebParam(name = "rtn", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<Short> rtn,
+            @WebParam(name = "errormsg", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> errormsg,
+            @WebParam(name = "lastdate", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> lastdate,
+            @WebParam(name = "lasttoken", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.INOUT)
+            Holder<String> lasttoken,
+            @WebParam(name = "checkagentResult", targetNamespace = "http://tempurl.org", mode = WebParam.Mode.OUT)
+            Holder<Short> checkagentResult);
 
 }

@@ -2,7 +2,7 @@ define(function(require, exports, module) {
 	//找店页面公用js
 	module.exports={
 		DRC_SELECT:Event_select
-	}
+	};
 	var const_ul;
     $(function(){
     	//入口
@@ -30,7 +30,7 @@ define(function(require, exports, module) {
 
     		})
 
-    })
+    });
  	//公共函数
  	function Event_select(arg){
 

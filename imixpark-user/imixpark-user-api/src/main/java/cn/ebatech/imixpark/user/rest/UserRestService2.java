@@ -53,7 +53,7 @@ public interface UserRestService2 {
     
     @POST
     @Path("updateIcon2/{userID}")
-	public void updateIcon2(int userID) ;
+    void updateIcon2(int userID) ;
 
     
   

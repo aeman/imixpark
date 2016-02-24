@@ -3,7 +3,7 @@ define(function(require, exports, module) {
 
 	module.exports={
 		//DRC_SELECT:Event_select
-	}
+	};
 
     $(function(){
     	var doc = $(document);
@@ -12,7 +12,7 @@ define(function(require, exports, module) {
 				if(th.hasClass("J_showBox")){ Event_touchend(th) }
 			})
 
-    })
+    });
 
     //公共函数
 	function Event_touchend(th){
@@ -29,4 +29,4 @@ define(function(require, exports, module) {
 
 
 
-})
+});

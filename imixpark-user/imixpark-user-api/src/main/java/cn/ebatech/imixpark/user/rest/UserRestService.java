@@ -34,31 +34,31 @@ public interface UserRestService {
 	 * @param Cardno 会员卡号
 	 * @return 会员信息
 	 */
-	public uMessage findVipInfo(int Cardno);
+	uMessage findVipInfo(int Cardno);
 	/**
 	 * 
 	 * @param 用户ID
 	 * @return 用户信息
 	 */
-	public uMessage findUserInfo(int userID);
+	uMessage findUserInfo(int userID);
 	
 	/**
 	 * 
 	 * @param  昵称、性别、生日、会员ID
 	 * @return 
 	 */
-	public uMessage updateUserInfo(int userID, String Alias, String sex, String Birthday);
+	uMessage updateUserInfo(int userID, String Alias, String sex, String Birthday);
 
 	/**
 	 * 
 	 * @param userID
 	 * @return 
 	 */
-	public uMessage findUserCps(int userID,int begin,int end);
+	uMessage findUserCps(int userID, int begin, int end);
 	
-	public uMessage findUserInts(int userID,int begin,int end);
+	uMessage findUserInts(int userID, int begin, int end);
 
-	public uMessage updateIcon(MultipartFormDataInput st);
+	uMessage updateIcon(MultipartFormDataInput st);
 	
 	
 	
